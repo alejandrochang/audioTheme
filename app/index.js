@@ -3,10 +3,14 @@
  */
 
 // Load application styles
-import 'styles/index.scss';
-import 'styles/background.scss';
 
 
 // ================================
 // START YOUR APP HERE
 // ================================
+
+import setupAudio from './audiovisualization';
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupAudio();
+});
