@@ -67,7 +67,8 @@ function BufferLoader(context, urlList, callback) {
       context,
       [
         // './assets/music/sundaycandy.mp3',
-        './assets/music/staytogether.mp3',
+        // './assets/music/staytogether.mp3',
+        './assets/music/randomaccessmemories.mp3',
       ],
       finishedLoading
     );
@@ -76,7 +77,7 @@ function BufferLoader(context, urlList, callback) {
     
    
 
-    analyser.fftSize = 2048;
+    analyser.fftSize = 4096/2;
     // analyser2.fftSize = 360;
 
     var bufferLength = analyser.frequencyBinCount;
@@ -102,19 +103,21 @@ function BufferLoader(context, urlList, callback) {
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
       requestAnimationFrame(draw);
       analyser.getByteTimeDomainData(dataArray);
-      // console.log(dataArray);
 
-      canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+      canvasCtx.lineWidth = 1.85;
+      function r() {
+        return Math.floor(Math.random() * 255);
+      }
+
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + 0 + "," + r() + ")";
       canvasCtx.beginPath();
 
       var sliceWidth = canvas.width * 1.0 / bufferLength;
       var x = 0;
 
       for (var i = 0; i < bufferLength; i++) {
-        // console.log('hello')
-        var v = dataArray[i] / 128.0;
-        var y = v * canvas.height / 2;
+        var v = dataArray[i] - 128;
+        var y = v + canvas.height / 2;
 
         if (i === 0) {
           canvasCtx.moveTo(x, y);
@@ -125,8 +128,22 @@ function BufferLoader(context, urlList, callback) {
         x += sliceWidth;
       }
       
-      canvasCtx.lineTo(canvas.width, canvas.height/2);
+      // canvasCtx.lineTo(canvas.width, canvas.height/2);
+      // canvasCtx.strokeStyle = "rgb(0, 0, 0)"
       canvasCtx.stroke();
+
+      // circle canvas
+
+      // find the center of the window
+      const center_x = canvas.width / 2;
+      const center_y = canvas.height / 2;
+      const radius = 150;
+
+      //draw a circle
+      canvasCtx.beginPath();
+      canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
+      canvasCtx.stroke();
+
     }
     draw();
   }

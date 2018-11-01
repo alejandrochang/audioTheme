@@ -154,9 +154,10 @@ var setupAudio = function setupAudio() {
 
   function init() {
     bufferLoader = new BufferLoader(context, [// './assets/music/sundaycandy.mp3',
-    './assets/music/staytogether.mp3'], finishedLoading);
+    // './assets/music/staytogether.mp3',
+    './assets/music/randomaccessmemories.mp3'], finishedLoading);
     bufferLoader.load();
-    analyser.fftSize = 2048; // analyser2.fftSize = 360;
+    analyser.fftSize = 4096 / 2; // analyser2.fftSize = 360;
 
     var bufferLength = analyser.frequencyBinCount;
     var bufferLength2 = analyser.frequencyBinCount; // console.log(bufferLength);
@@ -177,18 +178,21 @@ var setupAudio = function setupAudio() {
     function draw() {
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
       requestAnimationFrame(draw);
-      analyser.getByteTimeDomainData(dataArray); // console.log(dataArray);
+      analyser.getByteTimeDomainData(dataArray);
+      canvasCtx.lineWidth = 1.85;
 
-      canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+      function r() {
+        return Math.floor(Math.random() * 255);
+      }
+
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + 0 + "," + r() + ")";
       canvasCtx.beginPath();
       var sliceWidth = canvas.width * 1.0 / bufferLength;
       var x = 0;
 
       for (var i = 0; i < bufferLength; i++) {
-        // console.log('hello')
-        var v = dataArray[i] / 128.0;
-        var y = v * canvas.height / 2;
+        var v = dataArray[i] - 128;
+        var y = v + canvas.height / 2;
 
         if (i === 0) {
           canvasCtx.moveTo(x, y);
@@ -197,9 +201,19 @@ var setupAudio = function setupAudio() {
         }
 
         x += sliceWidth;
-      }
+      } // canvasCtx.lineTo(canvas.width, canvas.height/2);
+      // canvasCtx.strokeStyle = "rgb(0, 0, 0)"
 
-      canvasCtx.lineTo(canvas.width, canvas.height / 2);
+
+      canvasCtx.stroke(); // circle canvas
+      // find the center of the window
+
+      var center_x = canvas.width / 2;
+      var center_y = canvas.height / 2;
+      var radius = 150; //draw a circle
+
+      canvasCtx.beginPath();
+      canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
       canvasCtx.stroke();
     }
 
