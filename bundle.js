@@ -147,40 +147,78 @@ var setupAudio = function setupAudio() {
   window.onload = init;
   var context;
   var bufferLoader;
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+  var analyser = context.createAnalyser();
+  var analyser2 = context.createAnalyser();
 
   function init() {
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-    var analyser = context.createAnalyser();
     bufferLoader = new BufferLoader(context, [// './assets/music/sundaycandy.mp3',
-      // './assets/music/staytogether.mp3',
-    ], finishedLoading);
+    './assets/music/staytogether.mp3'], finishedLoading);
     bufferLoader.load();
-    setupAnalyser(analyser);
-  }
+    analyser.fftSize = 2048; // analyser2.fftSize = 360;
 
-  function setupAnalyser(context, analyser, bufferLoader) {
-    var source = context.createMediaStreamSource(bufferLoader); // source.connect(analyser);
-    // analyser.connect(distortion);
-    // distortion.connect(context.destination);
-    // analyser.fftSize = 2048;
-    // var bufferLength = analyser.frequencyBinCount;
-    // var dataArray = new Uint8Array(bufferLength);
+    var bufferLength = analyser.frequencyBinCount;
+    var bufferLength2 = analyser.frequencyBinCount; // console.log(bufferLength);
+
+    var dataArray = new Uint8Array(bufferLength);
+    var dataArray2 = new Uint8Array(bufferLength);
+    console.log(dataArray);
+    analyser.getByteTimeDomainData(dataArray); // console.log(dataArray);
     // analyser.getByteTimeDomainData(dataArray);
-    // analyser.getByteFrequencyData(dataArray);
-    // analyser.getFloatFrequencyData(dataArray);
-    // analyser.getFloatTimeDomainData(dataArray);
-    // AnalyserNode.getFloatFrequencyData()
-    // AnalyserNode.getByteFrequencyData()
-    // AnalyserNode.getByteFrequencyData()
-    // Types of analysers
-    // AnalyserNode.getFloatFrequencyData()
-    // AnalyserNode.getByteFrequencyData()
-    // AnalyserNode.getByTimeDomainData()
-    // AnalyserNode.getFloatTimeDomainData()
-    // AnalyserNode.frequencyBinCount()
-    // AnalyserNode.fftSize;
-  }
+
+    var canvas = document.getElementById("analyser-render");
+    canvas.width = window.innerWidth - 2;
+    canvas.height = window.innerHeight - 2;
+    var canvasCtx = canvas.getContext("2d");
+    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    function draw() {
+      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+      requestAnimationFrame(draw);
+      analyser.getByteTimeDomainData(dataArray); // console.log(dataArray);
+
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+      canvasCtx.beginPath();
+      var sliceWidth = canvas.width * 1.0 / bufferLength;
+      var x = 0;
+
+      for (var i = 0; i < bufferLength; i++) {
+        // console.log('hello')
+        var v = dataArray[i] / 128.0;
+        var y = v * canvas.height / 2;
+
+        if (i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      }
+
+      canvasCtx.lineTo(canvas.width, canvas.height / 2);
+      canvasCtx.stroke();
+    }
+
+    draw();
+  } // function draw();
+  // analyser.getByteFrequencyData(dataArray);
+  // analyser.getFloatFrequencyData(dataArray);
+  // analyser.getFloatTimeDomainData(dataArray);
+  // AnalyserNode.getFloatFrequencyData()
+  // AnalyserNode.getByteFrequencyData()
+  // AnalyserNode.getByteFrequencyData()
+  // Types of analysers
+  // AnalyserNode.getFloatFrequencyData()
+  // AnalyserNode.getByteFrequencyData()
+  // AnalyserNode.getByTimeDomainData()
+  // AnalyserNode.getFloatTimeDomainData()
+  // AnalyserNode.frequencyBinCount()
+  // AnalyserNode.fftSize;
+
 
   BufferLoader.prototype.load = function () {
     for (var i = 0; i < this.urlList.length; ++i) {
@@ -189,101 +227,15 @@ var setupAudio = function setupAudio() {
   };
 
   function finishedLoading(bufferList) {
-    // Create two sources and play them both together.
     var source1 = context.createBufferSource();
-    var source2 = context.createBufferSource();
+    source1.connect(analyser);
     source1.buffer = bufferList[0];
-    source2.buffer = bufferList[1];
     source1.connect(context.destination);
-    source2.connect(context.destination);
     source1.start(0);
-    source2.start(0);
-  } // manipulating the volume
-
-
-  var VolumeSample = {}; // Gain node needs to be mutated by volume control.
-  // VolumeSample.gainNode = null;
-  // VolumeSample.play = function () {
-  //   if (!context.createGain)
-  //     context.createGain = context.createGainNode;
-  //   this.gainNode = context.createGain();
-  //   var source = context.createBufferSource();
-  //   source.buffer = BUFFERS.techno;
-  //   // Connect source to a gain node
-  //   source.connect(this.gainNode);
-  //   // Connect gain node to destination
-  //   this.gainNode.connect(context.destination);
-  //   // Start playback in a loop
-  //   source.loop = true;
-  //   if (!source.start)
-  //     source.start = source.noteOn;
-  //   source.start(0);
-  //   this.source = source;
-  // };
-  // VolumeSample.changeVolume = function (element) {
-  //   var volume = element.value;
-  //   var fraction = parseInt(element.value) / parseInt(element.max);
-  //   // Let's use an x*x curve (x-squared) since simple linear (x) does not
-  //   // sound as good.
-  //   this.gainNode.gain.value = fraction * fraction;
-  // };
-  // VolumeSample.stop = function () {
-  //   if (!this.source.stop)
-  //     this.source.stop = source.noteOff;
-  //   this.source.stop(0);
-  // };
-  // VolumeSample.toggle = function () {
-  //   this.playing ? this.stop() : this.play();
-  //   this.playing = !this.playing;
-  // };
-  // end of volume 
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (setupAudio);
-
-/***/ }),
-
-/***/ "./app/audiovisuals.js":
-/*!*****************************!*\
-  !*** ./app/audiovisuals.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var setupVisuals = function setupVisuals() {
-  // set to the size of device
-  var canvas = document.getElementById('analyser-render');
-  canvas.width = window.innerWidth - 2;
-  canvas.height = window.innerHeight - 2;
-  var ctx = canvas.getContext("2d"); // find the center of the window
-
-  var center_x = canvas.width / 2;
-  var center_y = canvas.height / 2;
-  var radius = 150; //draw a circle
-
-  ctx.beginPath();
-  ctx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
-  ctx.stroke(); //bars 
-  // const bars = 200;
-  // bar_width = 2;
-  // for (var i = 0; i < bars; i++) {
-  //   //divide a circle into equal parts
-  //   rads = Math.PI * 2 / bars;
-  //   bar_height = 100;
-  //   bar_width = 2;
-  //   x = center_x + Math.cos(rads * i) * (radius);
-  //   y = center_y + Math.sin(rads * i) * (radius);
-  //   x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
-  //   y_end = center_y + Math.sin(rads * i) * (radius + bar_height);
-  //   //draw a bar
-  //   drawBar(x, y, x_end, y_end, bar_width);
-  // }
-  // Visualization with Web Audio API
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (setupVisuals);
 
 /***/ }),
 
@@ -358,8 +310,7 @@ var setupBackground = function setupBackground() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _audiovisualization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audiovisualization */ "./app/audiovisualization.js");
-/* harmony import */ var _audiovisuals_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audiovisuals.js */ "./app/audiovisuals.js");
-/* harmony import */ var _background_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./background.js */ "./app/background.js");
+/* harmony import */ var _background_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./background.js */ "./app/background.js");
 /**
  * Application entry point
  */
@@ -367,7 +318,7 @@ __webpack_require__.r(__webpack_exports__);
 // ================================
 // START YOUR APP HERE
 // ================================
-
+ // import setupVisuals from './audiovisuals.js';
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -375,9 +326,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  var context = canvas.getContext('2d');
-  Object(_audiovisuals_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  Object(_background_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  var context = canvas.getContext('2d'); // setupVisuals();
+
+  Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 
 /***/ })

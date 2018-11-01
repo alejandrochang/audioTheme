@@ -1,5 +1,6 @@
 // loads the buffer
 const setupAudio = () => {
+
   function BufferLoader(context, urlList, callback) {
     this.context = context;
     this.urlList = urlList;
@@ -56,37 +57,84 @@ function BufferLoader(context, urlList, callback) {
   var context;
   var bufferLoader;
 
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+  const analyser = context.createAnalyser();
+  const analyser2 = context.createAnalyser();
+
   function init() {
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-    const analyser = context.createAnalyser();
-
-
     bufferLoader = new BufferLoader(
       context,
       [
         // './assets/music/sundaycandy.mp3',
-        // './assets/music/staytogether.mp3',
+        './assets/music/staytogether.mp3',
       ],
       finishedLoading
     );
 
     bufferLoader.load();
+    
+   
 
-    setupAnalyser(analyser);
-  }
+    analyser.fftSize = 2048;
+    // analyser2.fftSize = 360;
 
-  function setupAnalyser(context, analyser, bufferLoader) {
-    const source = context.createMediaStreamSource(bufferLoader)
-    // source.connect(analyser);
-    // analyser.connect(distortion);
-    // distortion.connect(context.destination);
-
-    // analyser.fftSize = 2048;
-    // var bufferLength = analyser.frequencyBinCount;
-    // var dataArray = new Uint8Array(bufferLength);
+    var bufferLength = analyser.frequencyBinCount;
+    var bufferLength2 = analyser.frequencyBinCount;
+    // console.log(bufferLength);
+    var dataArray = new Uint8Array(bufferLength);
+    var dataArray2 = new Uint8Array(bufferLength);
+    console.log(dataArray);
+    analyser.getByteTimeDomainData(dataArray);
+    // console.log(dataArray);
 
     // analyser.getByteTimeDomainData(dataArray);
+
+    const canvas = document.getElementById("analyser-render");
+    canvas.width = window.innerWidth - 2;
+    canvas.height = window.innerHeight - 2;
+    const canvasCtx = canvas.getContext("2d");
+    
+    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    function draw() {
+      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+      requestAnimationFrame(draw);
+      analyser.getByteTimeDomainData(dataArray);
+      // console.log(dataArray);
+
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+      canvasCtx.beginPath();
+
+      var sliceWidth = canvas.width * 1.0 / bufferLength;
+      var x = 0;
+
+      for (var i = 0; i < bufferLength; i++) {
+        // console.log('hello')
+        var v = dataArray[i] / 128.0;
+        var y = v * canvas.height / 2;
+
+        if (i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      }
+      
+      canvasCtx.lineTo(canvas.width, canvas.height/2);
+      canvasCtx.stroke();
+    }
+    draw();
+  }
+
+
+
+    // function draw();
+
     // analyser.getByteFrequencyData(dataArray);
     // analyser.getFloatFrequencyData(dataArray);
     // analyser.getFloatTimeDomainData(dataArray);
@@ -105,72 +153,20 @@ function BufferLoader(context, urlList, callback) {
     // AnalyserNode.frequencyBinCount()
 
     // AnalyserNode.fftSize;
-  } 
 
   BufferLoader.prototype.load = function () {
     for (var i = 0; i < this.urlList.length; ++i)
       this.loadBuffer(this.urlList[i], i);
   }
-  
+
   function finishedLoading(bufferList) {
-    // Create two sources and play them both together.
     var source1 = context.createBufferSource();
-    var source2 = context.createBufferSource();
+    source1.connect(analyser);
     source1.buffer = bufferList[0];
-    source2.buffer = bufferList[1];
-  
     source1.connect(context.destination);
-    source2.connect(context.destination);
     source1.start(0);
-    source2.start(0);
-  }  
-  // manipulating the volume
-  
-  var VolumeSample = {
-  };
-  
-  // Gain node needs to be mutated by volume control.
-  // VolumeSample.gainNode = null;
-  
-  // VolumeSample.play = function () {
-  //   if (!context.createGain)
-  //     context.createGain = context.createGainNode;
-  //   this.gainNode = context.createGain();
-  //   var source = context.createBufferSource();
-  //   source.buffer = BUFFERS.techno;
-  
-  //   // Connect source to a gain node
-  //   source.connect(this.gainNode);
-  //   // Connect gain node to destination
-  //   this.gainNode.connect(context.destination);
-  //   // Start playback in a loop
-  //   source.loop = true;
-  //   if (!source.start)
-  //     source.start = source.noteOn;
-  //   source.start(0);
-  //   this.source = source;
-  // };
-  
-  // VolumeSample.changeVolume = function (element) {
-  //   var volume = element.value;
-  //   var fraction = parseInt(element.value) / parseInt(element.max);
-  //   // Let's use an x*x curve (x-squared) since simple linear (x) does not
-  //   // sound as good.
-  //   this.gainNode.gain.value = fraction * fraction;
-  // };
-  
-  // VolumeSample.stop = function () {
-  //   if (!this.source.stop)
-  //     this.source.stop = source.noteOff;
-  //   this.source.stop(0);
-  // };
-  
-  // VolumeSample.toggle = function () {
-  //   this.playing ? this.stop() : this.play();
-  //   this.playing = !this.playing;
-  // };
-  
-  // end of volume 
+  } 
+
 }
 
 export default setupAudio;

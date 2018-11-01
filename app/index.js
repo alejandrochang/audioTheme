@@ -9,7 +9,7 @@
 // ================================
 
 import setupAudio from './audiovisualization';
-import setupVisuals from './audiovisuals.js';
+// import setupVisuals from './audiovisuals.js';
 import setupBackground from './background.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const context = canvas.getContext('2d');
-  setupVisuals();
+  // setupVisuals();
   setupBackground();
 });
