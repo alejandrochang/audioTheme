@@ -118,8 +118,40 @@ select {
   background-color: #212121;
 }
 
-.hello {
-  /* color: red; */
+.play-img {
+  width: 25px;
+  height: 25px;
+}
+
+.forward-img {
+  width: 30px;
+  height: 30px;
+}
+
+.button-play {
+  width: 44px;
+  height: 44px;
+  background-color: #212121;
+  color: #fff;
+  padding: 3px 3px 3px 3px;
+  border-color: #212121;
+  cursor: pointer
+}
+
+.button-play2 {
+  width: 44px;
+  height: 44px;
+  background-color: #212121;
+  color: #fff;
+  padding: 3px 3px 3px 3px;
+  border-color: #212121;
+  cursor: pointer;
+  position: absolute;
+  left: 94px;
+}
+
+.button-play:hover {
+   
 }
 
 

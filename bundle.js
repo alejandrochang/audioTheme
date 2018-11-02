@@ -190,6 +190,12 @@ var setupAudio = function setupAudio() {
       // './assets/music/september.mp3',
       // './assets/music/sunandmoon.mp3',
       // './assets/music/espoir.mp3',
+      // './assets/music/hothands.mp3',
+      // './assets/music/2009.mp3',
+      // './assets/music/getyou.mp3',
+      // './assets/music/anziety.mp3',
+      // './assets/music/girlsthatdance.mp3',
+      // './assets/music/bananaclip.mp3',
     ], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
