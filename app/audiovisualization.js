@@ -61,6 +61,7 @@ function BufferLoader(context, urlList, callback) {
   context = new AudioContext();
   const analyser = context.createAnalyser();
   const analyser2 = context.createAnalyser();
+  const analyser3 = context.createAnalyser();
 
 
   function init() {
@@ -72,13 +73,13 @@ function BufferLoader(context, urlList, callback) {
         // './assets/music/randomaccessmemories.mp3',
         // './assets/music/babyblue.mp3',
         // './assets/music/igotu.mp3',
-        // './assets/music/outofmyleague.mp3',
+        './assets/music/outofmyleague.mp3',
         // './assets/music/thinkingaboutyou.mp3',
         // './assets/music/thewayyoulooktonight.mp3',
         // './assets/music/loveseason.mp3',
         // './assets/music/sofartogo.mp3',
         // './assets/music/comingover.mp3',
-        './assets/music/firestone.mp3',
+        // './assets/music/firestone.mp3',
       ],
       finishedLoading
     );
@@ -88,13 +89,16 @@ function BufferLoader(context, urlList, callback) {
    
     // audio analyzers
     analyser.fftSize = 2048;
-    analyser2.fftSize = 32;
+    analyser2.fftSize = 64;
+    analyser3.fftSize = 512;
     
     var bufferLength = analyser.frequencyBinCount;
     var bufferLength2 = analyser2.frequencyBinCount;
+    var bufferLength3 = analyser3.frequencyBinCount;
 
     var dataArray = new Uint8Array(bufferLength);
     var dataArray2 = new Uint8Array(bufferLength2);
+    var dataArray3 = new Uint8Array(bufferLength3);
 
 
     const canvas = document.getElementById("analyser-render");
@@ -110,11 +114,11 @@ function BufferLoader(context, urlList, callback) {
       requestAnimationFrame(draw);
 
       analyser.getByteTimeDomainData(dataArray); 
-      // analyser.getByteTimeDomainData(dataArray2); 
       analyser.getByteFrequencyData(dataArray2);
+      analyser.getByteFrequencyData(dataArray3);
 
 
-      canvasCtx.lineWidth = 1.95;
+      canvasCtx.lineWidth = 2.15;
       function r() {
         return Math.floor(Math.random() * 255);
       }
@@ -144,28 +148,41 @@ function BufferLoader(context, urlList, callback) {
 
       for (let i = 0; i < bufferLength2; i++) {
         var z = dataArray2[i];
+        var y = dataArray[i];
+        var w = dataArray3[i];
       }
       // circle canvas
 
       // find the center of the window
       const center_x = canvas.width / 2;
       const center_y = canvas.height / 2;
-
       const radius = z;
       canvasCtx.lineWidth = 2;
       canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")";
-
-      // canvasCtx.strokeStyle = "#09f";
-      // canvasCtx.fillStyle = "rgba(0,0,0,0.16)";
-
-
+      
       //draw a circle
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
+      //second circle
+      const cx = (canvas.width / 2);
+      const cy = (canvas.height / 2);
+      let radius2 = y;
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
+      canvasCtx.beginPath();
+      canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
+      canvasCtx.stroke();
 
-
+      const cx2 = canvas.width / 2;
+      const cy2 = canvas.height / 2;
+      let radius3 = w;
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
+      canvasCtx.beginPath();
+      canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
+      canvasCtx.stroke();
     }
     draw();
   }
@@ -187,8 +204,6 @@ function BufferLoader(context, urlList, callback) {
     // AnalyserNode.getFloatTimeDomainData()
     // AnalyserNode.frequencyBinCount()
 
-    // AnalyserNode.fftSize;
-
   BufferLoader.prototype.load = function () {
     for (var i = 0; i < this.urlList.length; ++i)
       this.loadBuffer(this.urlList[i], i);
@@ -196,10 +211,20 @@ function BufferLoader(context, urlList, callback) {
 
   function finishedLoading(bufferList) {
     var source1 = context.createBufferSource();
+    var source2= context.createBufferSource();
+    var source3= context.createBufferSource();
     source1.connect(analyser);
+    source2.connect(analyser2);
+    source3.connect(analyser3);
     source1.buffer = bufferList[0];
+    source2.buffer = bufferList[0];
+    source3.buffer = bufferList[0];
     source1.connect(context.destination);
+    source2.connect(context.destination);
+    source3.connect(context.destination);
     source1.start(0);
+    source2.start(0);
+    source3.start(0);
   } 
 
 }
