@@ -62,6 +62,7 @@ function BufferLoader(context, urlList, callback) {
   const analyser = context.createAnalyser();
   const analyser2 = context.createAnalyser();
   const analyser3 = context.createAnalyser();
+  const analyser4 = context.createAnalyser();
 
 
   function init() {
@@ -73,13 +74,31 @@ function BufferLoader(context, urlList, callback) {
         // './assets/music/randomaccessmemories.mp3',
         // './assets/music/babyblue.mp3',
         // './assets/music/igotu.mp3',
-        './assets/music/outofmyleague.mp3',
+        // './assets/music/outofmyleague.mp3',
         // './assets/music/thinkingaboutyou.mp3',
         // './assets/music/thewayyoulooktonight.mp3',
         // './assets/music/loveseason.mp3',
         // './assets/music/sofartogo.mp3',
         // './assets/music/comingover.mp3',
         // './assets/music/firestone.mp3',
+        // './assets/music/dancinginthemoonlight.mp3',
+        // './assets/music/youngandbeautiful.mp3',
+        // './assets/music/doyou.mp3',
+        // './assets/music/allido.mp3',
+        // './assets/music/allthesethingsthativedone.mp3',
+        // './assets/music/tuesday.mp3',
+        // './assets/music/everydayshelter.mp3',
+        // './assets/music/happy.mp3',
+        // './assets/music/heavenonlyknows.mp3',
+        // './assets/music/icanthelpmyself.mp3',
+        // './assets/music/tenniscourt.mp3',
+        // './assets/music/openyoureyes.mp3',
+        // './assets/music/redlights.mp3',
+        // './assets/music/sleepless.mp3',
+        // './assets/music/slowjamz.mp3',
+        // './assets/music/stayhigh.mp3',
+        // './assets/music/tomorrowland.mp3',
+        // './assets/music/tuscanleather.mp3',
       ],
       finishedLoading
     );
@@ -89,16 +108,19 @@ function BufferLoader(context, urlList, callback) {
    
     // audio analyzers
     analyser.fftSize = 2048;
-    analyser2.fftSize = 64;
+    analyser2.fftSize = 32;
     analyser3.fftSize = 512;
+    analyser4.fftSize = 256;
     
     var bufferLength = analyser.frequencyBinCount;
     var bufferLength2 = analyser2.frequencyBinCount;
     var bufferLength3 = analyser3.frequencyBinCount;
+    var bufferLength4 = analyser4.frequencyBinCount;
 
     var dataArray = new Uint8Array(bufferLength);
     var dataArray2 = new Uint8Array(bufferLength2);
     var dataArray3 = new Uint8Array(bufferLength3);
+    var dataArray4 = new Uint8Array(bufferLength4);
 
 
     const canvas = document.getElementById("analyser-render");
@@ -116,9 +138,10 @@ function BufferLoader(context, urlList, callback) {
       analyser.getByteTimeDomainData(dataArray); 
       analyser.getByteFrequencyData(dataArray2);
       analyser.getByteFrequencyData(dataArray3);
+      analyser.getByteFrequencyData(dataArray4);
 
 
-      canvasCtx.lineWidth = 2.15;
+      canvasCtx.lineWidth = 3.15;
       function r() {
         return Math.floor(Math.random() * 255);
       }
@@ -141,15 +164,14 @@ function BufferLoader(context, urlList, callback) {
 
         x += sliceWidth;
       }
-      
-      // canvasCtx.lineTo(canvas.width, canvas.height/2);
-      // canvasCtx.strokeStyle = "rgb(0, 0, 0)"
+
       canvasCtx.stroke();
 
       for (let i = 0; i < bufferLength2; i++) {
         var z = dataArray2[i];
         var y = dataArray[i];
         var w = dataArray3[i];
+        var m = dataArray4[i];
       }
       // circle canvas
 
@@ -178,11 +200,36 @@ function BufferLoader(context, urlList, callback) {
       const cx2 = canvas.width / 2;
       const cy2 = canvas.height / 2;
       let radius3 = w;
-      canvasCtx.lineWidth = 2;
+      canvasCtx.lineWidth = 2.2;
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
       canvasCtx.stroke();
+
+      const cx3 = canvas.width / 2;
+      const cy3 = canvas.height / 2;
+      let radius4 = m;
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
+      canvasCtx.beginPath();
+      canvasCtx.arc(cx3, cy3, radius4, 0, 2 * Math.PI);
+      canvasCtx.stroke();
+
+      //hexagon
+      let side = 0;
+      let size = radius;
+      let q = canvas.width/3;
+      let j = canvas.height/3;
+
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
+      canvasCtx.beginPath();
+      canvasCtx.moveTo(q + size * Math.cos(0), j + size * Math.sin(0));
+
+      for (side; side < 7; side++) {
+        canvasCtx.lineTo(q + size * Math.cos(side * 2 * Math.PI / 6), j + size * Math.sin(side * 2 * Math.PI / 6));
+      }
+      canvasCtx.fillStyle = "white opacity .2";
+      canvasCtx.fill();
     }
     draw();
   }
@@ -213,18 +260,23 @@ function BufferLoader(context, urlList, callback) {
     var source1 = context.createBufferSource();
     var source2= context.createBufferSource();
     var source3= context.createBufferSource();
+    var source4= context.createBufferSource();
     source1.connect(analyser);
     source2.connect(analyser2);
     source3.connect(analyser3);
+    source4.connect(analyser4);
     source1.buffer = bufferList[0];
     source2.buffer = bufferList[0];
     source3.buffer = bufferList[0];
+    source4.buffer = bufferList[0];
     source1.connect(context.destination);
     source2.connect(context.destination);
     source3.connect(context.destination);
+    source4.connect(context.destination);
     source1.start(0);
     source2.start(0);
     source3.start(0);
+    source4.start(0);
   } 
 
 }
