@@ -62,13 +62,23 @@ function BufferLoader(context, urlList, callback) {
   const analyser = context.createAnalyser();
   const analyser2 = context.createAnalyser();
 
+
   function init() {
     bufferLoader = new BufferLoader(
       context,
       [
         // './assets/music/sundaycandy.mp3',
         // './assets/music/staytogether.mp3',
-        './assets/music/randomaccessmemories.mp3',
+        // './assets/music/randomaccessmemories.mp3',
+        // './assets/music/babyblue.mp3',
+        // './assets/music/igotu.mp3',
+        // './assets/music/outofmyleague.mp3',
+        // './assets/music/thinkingaboutyou.mp3',
+        // './assets/music/thewayyoulooktonight.mp3',
+        // './assets/music/loveseason.mp3',
+        // './assets/music/sofartogo.mp3',
+        // './assets/music/comingover.mp3',
+        './assets/music/firestone.mp3',
       ],
       finishedLoading
     );
@@ -76,20 +86,16 @@ function BufferLoader(context, urlList, callback) {
     bufferLoader.load();
     
    
-
-    analyser.fftSize = 4096/2;
-    // analyser2.fftSize = 360;
-
+    // audio analyzers
+    analyser.fftSize = 2048;
+    analyser2.fftSize = 32;
+    
     var bufferLength = analyser.frequencyBinCount;
-    var bufferLength2 = analyser.frequencyBinCount;
-    // console.log(bufferLength);
-    var dataArray = new Uint8Array(bufferLength);
-    var dataArray2 = new Uint8Array(bufferLength);
-    console.log(dataArray);
-    analyser.getByteTimeDomainData(dataArray);
-    // console.log(dataArray);
+    var bufferLength2 = analyser2.frequencyBinCount;
 
-    // analyser.getByteTimeDomainData(dataArray);
+    var dataArray = new Uint8Array(bufferLength);
+    var dataArray2 = new Uint8Array(bufferLength2);
+
 
     const canvas = document.getElementById("analyser-render");
     canvas.width = window.innerWidth - 2;
@@ -102,9 +108,13 @@ function BufferLoader(context, urlList, callback) {
     function draw() {
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
       requestAnimationFrame(draw);
-      analyser.getByteTimeDomainData(dataArray);
 
-      canvasCtx.lineWidth = 1.85;
+      analyser.getByteTimeDomainData(dataArray); 
+      // analyser.getByteTimeDomainData(dataArray2); 
+      analyser.getByteFrequencyData(dataArray2);
+
+
+      canvasCtx.lineWidth = 1.95;
       function r() {
         return Math.floor(Math.random() * 255);
       }
@@ -132,30 +142,38 @@ function BufferLoader(context, urlList, callback) {
       // canvasCtx.strokeStyle = "rgb(0, 0, 0)"
       canvasCtx.stroke();
 
+      for (let i = 0; i < bufferLength2; i++) {
+        var z = dataArray2[i];
+      }
       // circle canvas
 
       // find the center of the window
       const center_x = canvas.width / 2;
       const center_y = canvas.height / 2;
-      const radius = 150;
+
+      const radius = z;
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")";
+
+      // canvasCtx.strokeStyle = "#09f";
+      // canvasCtx.fillStyle = "rgba(0,0,0,0.16)";
+
 
       //draw a circle
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
+
+
     }
     draw();
   }
 
 
-
-    // function draw();
-
     // analyser.getByteFrequencyData(dataArray);
     // analyser.getFloatFrequencyData(dataArray);
     // analyser.getFloatTimeDomainData(dataArray);
-
 
 
     // AnalyserNode.getFloatFrequencyData()
