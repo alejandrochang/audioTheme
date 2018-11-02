@@ -185,6 +185,11 @@ var setupAudio = function setupAudio() {
       // './assets/music/stayhigh.mp3',
       // './assets/music/tomorrowland.mp3',
       // './assets/music/tuscanleather.mp3',
+      // './assets/music/comebacktoearth.mp3',
+      // './assets/music/january28.mp3',
+      // './assets/music/september.mp3',
+      // './assets/music/sunandmoon.mp3',
+      // './assets/music/espoir.mp3',
     ], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
@@ -252,7 +257,7 @@ var setupAudio = function setupAudio() {
       var center_x = canvas.width / 2;
       var center_y = canvas.height / 2;
       var radius = z;
-      canvasCtx.lineWidth = 2;
+      canvasCtx.lineWidth = 2.3;
       canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")"; //draw a circle
 
       canvasCtx.beginPath();
@@ -262,7 +267,7 @@ var setupAudio = function setupAudio() {
       var cx = canvas.width / 2;
       var cy = canvas.height / 2;
       var radius2 = y;
-      canvasCtx.lineWidth = 2;
+      canvasCtx.lineWidth = 2.3;
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
@@ -278,26 +283,23 @@ var setupAudio = function setupAudio() {
       var cx3 = canvas.width / 2;
       var cy3 = canvas.height / 2;
       var radius4 = m;
-      canvasCtx.lineWidth = 2;
+      canvasCtx.lineWidth = 2.1;
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx3, cy3, radius4, 0, 2 * Math.PI);
       canvasCtx.stroke(); //hexagon
-
-      var side = 0;
-      var size = radius;
-      var q = canvas.width / 3;
-      var j = canvas.height / 3;
-      canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
-      canvasCtx.beginPath();
-      canvasCtx.moveTo(q + size * Math.cos(0), j + size * Math.sin(0));
-
-      for (side; side < 7; side++) {
-        canvasCtx.lineTo(q + size * Math.cos(side * 2 * Math.PI / 6), j + size * Math.sin(side * 2 * Math.PI / 6));
-      }
-
-      canvasCtx.fillStyle = "white opacity .2";
-      canvasCtx.fill();
+      // let side = 0;
+      // let size = radius;
+      // let q = canvas.width/3;
+      // let j = canvas.height/3;
+      // canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
+      // canvasCtx.beginPath();
+      // canvasCtx.moveTo(q + size * Math.cos(0), j + size * Math.sin(0));
+      // for (side; side < 7; side++) {
+      //   canvasCtx.lineTo(q + size * Math.cos(side * 2 * Math.PI / 6), j + size * Math.sin(side * 2 * Math.PI / 6));
+      // }
+      // canvasCtx.fillStyle = "white opacity .2";
+      // canvasCtx.fill();
     }
 
     draw();
@@ -430,15 +432,16 @@ __webpack_require__.r(__webpack_exports__);
 // ================================
  // import setupVisuals from './audiovisuals.js';
 
+ // import blackhole from './blackhole';
 
 document.addEventListener('DOMContentLoaded', function () {
-  Object(_audiovisualization__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  Object(_audiovisualization__WEBPACK_IMPORTED_MODULE_0__["default"])(); // blackhole();
+
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   var context = canvas.getContext('2d'); // setupVisuals();
-
-  Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  // setupBackground();
 });
 
 /***/ })

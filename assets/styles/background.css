@@ -21,9 +21,9 @@
   top: 60px;
 }
 #title span {
-  background: -webkit-linear-gradient(white, #38495a);
+  /* background: -webkit-linear-gradient(white, #38495a);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 .subtitle span {
@@ -36,17 +36,42 @@
 
 /* Non-background */
 
+option {
+  font-weight: normal;
+  display: block;
+  white-space: pre;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+}
+
+select { 
+  display: block;
+  background: #212121;
+  color: #fff;
+  height: 45px;
+  line-height: 45px;
+  float: left;
+  border: none;
+  font-size: 12px;
+  padding: 0 10px 0 15px;
+  margin: 0;
+  margin-right: -1px;
+  cursor: pointer;
+  -webkit-border-radius: 2px 0 0 2px;
+  -moz-border-radius: 2px 0 0 2px;
+  border-radius: 2px 0 0 2px;
+} 
+
 .controls-container {
   max-width: 360px;
   width: 100%;
   padding: 30px;
   height: 200px;
   box-sizing: border-box;
-  left: 90px;
-  top: 130px;
+  right: 90px;
+  top: 70px;
   position: absolute;
   opacity: 0.6;
-  background-color: slategray;
   transition: opacity 6ms;
 }
 
@@ -54,8 +79,43 @@
   opacity: .8;
 }
 
-.ui-controls-container {
+.control-inner-container {
+  background: #212121;
+  color: #fff;
+  opacity: 0.6;
+  border-radius: 2px;
+  -webkit-transition: opacity 100ms linear;
+  -moz-transition: opacity 100ms linear;
+  -o-transition: opacity 100ms linear;
+  transition: opacity 100ms linear;
+  -webkit-box-shadow: 0px 3px 5px #000;
+  -moz-box-shadow: 0px 3px 5px #000;
+  box-shadow: 0px 3px 5px #000;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
 
+.visual-chooser {
+  display: block;
+  background: #212121;
+  color: #fff;
+  height: 45px;
+  line-height: 45px;
+  float: left;
+  border: none;
+  font-size: 15px;
+  padding: 0 10px 0 15px;
+  margin: 0;
+  margin-right: -1px;
+  cursor: pointer;
+  -webkit-border-radius: 2px 0 0 2px;
+  -moz-border-radius: 2px 0 0 2px;
+  border-radius: 2px 0 0 2px;
+}
+
+.visual-chooser option {
+  background-color: #212121;
 }
 
 .hello {
