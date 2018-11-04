@@ -156,47 +156,19 @@ var setupAudio = function setupAudio() {
 
   function init() {
     bufferLoader = new BufferLoader(context, [// './assets/music/sundaycandy.mp3',
-      // './assets/music/staytogether.mp3',
-      // './assets/music/randomaccessmemories.mp3',
-      // './assets/music/babyblue.mp3',
-      // './assets/music/igotu.mp3',
-      // './assets/music/outofmyleague.mp3',
-      // './assets/music/thinkingaboutyou.mp3',
-      // './assets/music/thewayyoulooktonight.mp3',
-      // './assets/music/loveseason.mp3',
-      // './assets/music/sofartogo.mp3',
-      // './assets/music/comingover.mp3',
-      // './assets/music/firestone.mp3',
-      // './assets/music/dancinginthemoonlight.mp3',
-      // './assets/music/youngandbeautiful.mp3',
-      // './assets/music/doyou.mp3',
-      // './assets/music/allido.mp3',
-      // './assets/music/allthesethingsthativedone.mp3',
-      // './assets/music/tuesday.mp3',
-      // './assets/music/everydayshelter.mp3',
-      // './assets/music/happy.mp3',
-      // './assets/music/heavenonlyknows.mp3',
-      // './assets/music/icanthelpmyself.mp3',
-      // './assets/music/tenniscourt.mp3',
-      // './assets/music/openyoureyes.mp3',
-      // './assets/music/redlights.mp3',
-      // './assets/music/sleepless.mp3',
-      // './assets/music/slowjamz.mp3',
-      // './assets/music/stayhigh.mp3',
-      // './assets/music/tomorrowland.mp3',
-      // './assets/music/tuscanleather.mp3',
-      // './assets/music/comebacktoearth.mp3',
-      // './assets/music/january28.mp3',
-      // './assets/music/september.mp3',
-      // './assets/music/sunandmoon.mp3',
-      // './assets/music/espoir.mp3',
-      // './assets/music/hothands.mp3',
-      // './assets/music/2009.mp3',
-      // './assets/music/getyou.mp3',
-      // './assets/music/anziety.mp3',
-      // './assets/music/girlsthatdance.mp3',
-      // './assets/music/bananaclip.mp3',
-    ], finishedLoading);
+    // './assets/music/staytogether.mp3',
+    // './assets/music/randomaccessmemories.mp3',
+    // './assets/music/babyblue.mp3',
+    // './assets/music/igotu.mp3',
+    // './assets/music/outofmyleague.mp3',
+    // './assets/music/thinkingaboutyou.mp3',
+    // './assets/music/thewayyoulooktonight.mp3',
+    // './assets/music/loveseason.mp3',
+    // './assets/music/sofartogo.mp3',
+    // './assets/music/comingover.mp3',
+    // './assets/music/firestone.mp3',
+    // './assets/music/dancinginthemoonlight.mp3',
+    './assets/music/youngandbeautiful.mp3'], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
     analyser.fftSize = 2048;
@@ -264,7 +236,7 @@ var setupAudio = function setupAudio() {
       var center_y = canvas.height / 2;
       var radius = z;
       canvasCtx.lineWidth = 2.3;
-      canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")"; //draw a circle
+      canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")"; //circle
 
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
@@ -277,7 +249,8 @@ var setupAudio = function setupAudio() {
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
-      canvasCtx.stroke();
+      canvasCtx.stroke(); //third circle
+
       var cx2 = canvas.width / 2;
       var cy2 = canvas.height / 2;
       var radius3 = w;
@@ -285,7 +258,8 @@ var setupAudio = function setupAudio() {
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
-      canvasCtx.stroke();
+      canvasCtx.stroke(); //fourth circle
+
       var cx3 = canvas.width / 2;
       var cy3 = canvas.height / 2;
       var radius4 = m;
@@ -435,7 +409,7 @@ __webpack_require__.r(__webpack_exports__);
 // Load application styles
 // ================================
 // START YOUR APP HERE
-// ================================
+// ==============================
  // import setupVisuals from './audiovisuals.js';
 
  // import blackhole from './blackhole';
@@ -447,7 +421,8 @@ document.addEventListener('DOMContentLoaded', function () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   var context = canvas.getContext('2d'); // setupVisuals();
-  // setupBackground();
+
+  Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 
 /***/ })

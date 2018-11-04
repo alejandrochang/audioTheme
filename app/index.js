@@ -6,7 +6,7 @@
 
 // ================================
 // START YOUR APP HERE
-// ================================
+// ==============================
 
 import setupAudio from './audiovisualization';
 // import setupVisuals from './audiovisuals.js';
@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.height = window.innerHeight;
   const context = canvas.getContext('2d');
   // setupVisuals();
-  // setupBackground();
+  setupBackground();
 }); 

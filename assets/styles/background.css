@@ -9,16 +9,18 @@
 
 #title {
   position: absolute;
-  left: 30px;
-  right: 0;
-  color: #FFF;
-  text-align: left;
-  font-family: "lato", sans-serif;
-  font-weight: 300;
-  font-size: 35px;
-  letter-spacing: 5px;
-  padding-left: 10px;
-  top: 60px;
+    left: 30px;
+    right: 0;
+    color: #FFF;
+    text-align: left;
+    font-family: "lato", sans-serif;
+    font-weight: 300;
+    font-size: 35px;
+    letter-spacing: 5px;
+    padding-left: 10px;
+    top: 60px;
+    height: 160px;
+    width: 384px;
 }
 #title span {
   /* background: -webkit-linear-gradient(white, #38495a);
@@ -44,9 +46,13 @@ option {
   padding: 0px 2px 1px;
 }
 
+.option-hover {
+  background-color: #212121 no-repeat center center;
+}
+
 select { 
   display: block;
-  background: #212121;
+  background: #000;
   color: #fff;
   height: 45px;
   line-height: 45px;
@@ -68,8 +74,8 @@ select {
   padding: 30px;
   height: 200px;
   box-sizing: border-box;
-  right: 90px;
-  top: 70px;
+  right: 25px;
+  top: -4px;
   position: absolute;
   opacity: 0.6;
   transition: opacity 6ms;
@@ -80,7 +86,7 @@ select {
 }
 
 .control-inner-container {
-  background: #212121;
+  background: #000;
   color: #fff;
   opacity: 0.6;
   border-radius: 2px;
@@ -131,23 +137,40 @@ select {
 .button-play {
   width: 44px;
   height: 44px;
-  background-color: #212121;
+  background-color: #000;
   color: #fff;
   padding: 3px 3px 3px 3px;
-  border-color: #212121;
-  cursor: pointer
+  border-color: #000;
+  cursor: pointer;
+  position: relative;
+  left: 7px;
 }
 
 .button-play2 {
   width: 44px;
   height: 44px;
-  background-color: #212121;
+  background-color: #000;
   color: #fff;
   padding: 3px 3px 3px 3px;
-  border-color: #212121;
+  border-color: #000;
   cursor: pointer;
   position: absolute;
-  left: 94px;
+  left: 111px;
+}
+
+img#github {
+  height: inherit;
+  width: inherit;
+}
+
+.link1 {
+  width: 25px;
+  height: 25px;
+}
+
+.link2 {
+  width: 25px;
+  height: 25px;
 }
 
 .button-play:hover {

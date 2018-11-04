@@ -82,7 +82,7 @@ function BufferLoader(context, urlList, callback) {
         // './assets/music/comingover.mp3',
         // './assets/music/firestone.mp3',
         // './assets/music/dancinginthemoonlight.mp3',
-        // './assets/music/youngandbeautiful.mp3',
+        './assets/music/youngandbeautiful.mp3',
         // './assets/music/doyou.mp3',
         // './assets/music/allido.mp3',
         // './assets/music/allthesethingsthativedone.mp3',
@@ -193,7 +193,7 @@ function BufferLoader(context, urlList, callback) {
       canvasCtx.lineWidth = 2.3;
       canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")";
       
-      //draw a circle
+      //circle
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
       canvasCtx.stroke();
@@ -208,6 +208,7 @@ function BufferLoader(context, urlList, callback) {
       canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
+      //third circle
       const cx2 = canvas.width / 2;
       const cy2 = canvas.height / 2;
       let radius3 = w;
@@ -217,6 +218,7 @@ function BufferLoader(context, urlList, callback) {
       canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
+      //fourth circle
       const cx3 = canvas.width / 2;
       const cy3 = canvas.height / 2;
       let radius4 = m;
@@ -231,11 +233,9 @@ function BufferLoader(context, urlList, callback) {
       // let size = radius;
       // let q = canvas.width/3;
       // let j = canvas.height/3;
-
       // canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       // canvasCtx.beginPath();
       // canvasCtx.moveTo(q + size * Math.cos(0), j + size * Math.sin(0));
-
       // for (side; side < 7; side++) {
       //   canvasCtx.lineTo(q + size * Math.cos(side * 2 * Math.PI / 6), j + size * Math.sin(side * 2 * Math.PI / 6));
       // }
