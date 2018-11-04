@@ -168,7 +168,24 @@ var setupAudio = function setupAudio() {
     // './assets/music/comingover.mp3',
     // './assets/music/firestone.mp3',
     // './assets/music/dancinginthemoonlight.mp3',
-    './assets/music/youngandbeautiful.mp3'], finishedLoading);
+    // './assets/music/youngandbeautiful.mp3',
+    // './assets/music/doyou.mp3',
+    // './assets/music/allido.mp3',
+    // './assets/music/allthesethingsthativedone.mp3',
+    // './assets/music/tuesday.mp3',
+    // './assets/music/everydayshelter.mp3',
+    // './assets/music/happy.mp3',
+    // './assets/music/heavenonlyknows.mp3',
+    // './assets/music/icanthelpmyself.mp3',
+    // './assets/music/tenniscourt.mp3',
+    // './assets/music/openyoureyes.mp3',
+    // './assets/music/redlights.mp3',
+    // './assets/music/sleepless.mp3',
+    // './assets/music/slowjamz.mp3',
+    // './assets/music/stayhigh.mp3',
+    // './assets/music/tomorrowland.mp3',
+    // './assets/music/tuscanleather.mp3',
+    './assets/music/comebacktoearth.mp3'], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
     analyser.fftSize = 2048;
