@@ -59,6 +59,7 @@ function BufferLoader(context, urlList, callback) {
 
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   context = new AudioContext();
+
   const analyser = context.createAnalyser();
   const analyser2 = context.createAnalyser();
   const analyser3 = context.createAnalyser();
@@ -99,7 +100,7 @@ function BufferLoader(context, urlList, callback) {
         // './assets/music/stayhigh.mp3',
         // './assets/music/tomorrowland.mp3',
         // './assets/music/tuscanleather.mp3',
-        './assets/music/comebacktoearth.mp3',
+        // './assets/music/comebacktoearth.mp3',
         // './assets/music/january28.mp3',
         // './assets/music/september.mp3',
         // './assets/music/sunandmoon.mp3',
@@ -284,12 +285,50 @@ function BufferLoader(context, urlList, callback) {
     source2.connect(context.destination);
     source3.connect(context.destination);
     source4.connect(context.destination);
+
     source1.start(0);
     source2.start(0);
     source3.start(0);
     source4.start(0);
   } 
 
+  // document.querySelector('.stop-button').addEventListener('click', stop);
+
+  const stop = () => {
+    source.stop(context.currentTIme); // stop the source immediately
+  }
+
+  // function start() {
+  //   let request = new XMLHttpRequest();
+  //   request.open("GET", this.urlList, true);
+  //   request.responseType = "arraybuffer";
+
+  //   request.onload = function() {
+  //     let data = request.response;
+
+  //     audioRouting(data);
+  //   };
+
+  //   request.send();
+  // }
+
+  // document.querySelector('.button-play').addEventListener('click', start);
+  document.querySelector('.button-play').addEventListener('click', stop);
+
+
+  // const audioRouting = (data) => {
+  //   source = context.createBufferSource();
+  //   context.decodeAudioData(data, function(buffer){
+  //     source.buffer = buffer;
+  //     source.connect(context.destination);
+  //     playSound(source);
+  //   })
+  // }
+
+  // const playSound = () => {
+  //   source.start(context.currenTime);
+  // }
+  
 }
 
 export default setupAudio;

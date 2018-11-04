@@ -156,36 +156,47 @@ var setupAudio = function setupAudio() {
 
   function init() {
     bufferLoader = new BufferLoader(context, [// './assets/music/sundaycandy.mp3',
-    // './assets/music/staytogether.mp3',
-    // './assets/music/randomaccessmemories.mp3',
-    // './assets/music/babyblue.mp3',
-    // './assets/music/igotu.mp3',
-    // './assets/music/outofmyleague.mp3',
-    // './assets/music/thinkingaboutyou.mp3',
-    // './assets/music/thewayyoulooktonight.mp3',
-    // './assets/music/loveseason.mp3',
-    // './assets/music/sofartogo.mp3',
-    // './assets/music/comingover.mp3',
-    // './assets/music/firestone.mp3',
-    // './assets/music/dancinginthemoonlight.mp3',
-    // './assets/music/youngandbeautiful.mp3',
-    // './assets/music/doyou.mp3',
-    // './assets/music/allido.mp3',
-    // './assets/music/allthesethingsthativedone.mp3',
-    // './assets/music/tuesday.mp3',
-    // './assets/music/everydayshelter.mp3',
-    // './assets/music/happy.mp3',
-    // './assets/music/heavenonlyknows.mp3',
-    // './assets/music/icanthelpmyself.mp3',
-    // './assets/music/tenniscourt.mp3',
-    // './assets/music/openyoureyes.mp3',
-    // './assets/music/redlights.mp3',
-    // './assets/music/sleepless.mp3',
-    // './assets/music/slowjamz.mp3',
-    // './assets/music/stayhigh.mp3',
-    // './assets/music/tomorrowland.mp3',
-    // './assets/music/tuscanleather.mp3',
-    './assets/music/comebacktoearth.mp3'], finishedLoading);
+      // './assets/music/staytogether.mp3',
+      // './assets/music/randomaccessmemories.mp3',
+      // './assets/music/babyblue.mp3',
+      // './assets/music/igotu.mp3',
+      // './assets/music/outofmyleague.mp3',
+      // './assets/music/thinkingaboutyou.mp3',
+      // './assets/music/thewayyoulooktonight.mp3',
+      // './assets/music/loveseason.mp3',
+      // './assets/music/sofartogo.mp3',
+      // './assets/music/comingover.mp3',
+      // './assets/music/firestone.mp3',
+      // './assets/music/dancinginthemoonlight.mp3',
+      // './assets/music/youngandbeautiful.mp3',
+      // './assets/music/doyou.mp3',
+      // './assets/music/allido.mp3',
+      // './assets/music/allthesethingsthativedone.mp3',
+      // './assets/music/tuesday.mp3',
+      // './assets/music/everydayshelter.mp3',
+      // './assets/music/happy.mp3',
+      // './assets/music/heavenonlyknows.mp3',
+      // './assets/music/icanthelpmyself.mp3',
+      // './assets/music/tenniscourt.mp3',
+      // './assets/music/openyoureyes.mp3',
+      // './assets/music/redlights.mp3',
+      // './assets/music/sleepless.mp3',
+      // './assets/music/slowjamz.mp3',
+      // './assets/music/stayhigh.mp3',
+      // './assets/music/tomorrowland.mp3',
+      // './assets/music/tuscanleather.mp3',
+      // './assets/music/comebacktoearth.mp3',
+      // './assets/music/january28.mp3',
+      // './assets/music/september.mp3',
+      // './assets/music/sunandmoon.mp3',
+      // './assets/music/espoir.mp3',
+      // './assets/music/hothands.mp3',
+      // './assets/music/2009.mp3',
+      // './assets/music/getyou.mp3',
+      // './assets/music/anziety.mp3',
+      // './assets/music/girlsthatdance.mp3',
+      // './assets/music/bananaclip.mp3',
+    ], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
     analyser.fftSize = 2048;
@@ -341,7 +352,35 @@ var setupAudio = function setupAudio() {
     source2.start(0);
     source3.start(0);
     source4.start(0);
-  }
+  } // document.querySelector('.stop-button').addEventListener('click', stop);
+
+
+  var stop = function stop() {
+    source.stop(context.currentTIme); // stop the source immediately
+  }; // function start() {
+  //   let request = new XMLHttpRequest();
+  //   request.open("GET", this.urlList, true);
+  //   request.responseType = "arraybuffer";
+  //   request.onload = function() {
+  //     let data = request.response;
+  //     audioRouting(data);
+  //   };
+  //   request.send();
+  // }
+  // document.querySelector('.button-play').addEventListener('click', start);
+
+
+  document.querySelector('.button-play').addEventListener('click', stop); // const audioRouting = (data) => {
+  //   source = context.createBufferSource();
+  //   context.decodeAudioData(data, function(buffer){
+  //     source.buffer = buffer;
+  //     source.connect(context.destination);
+  //     playSound(source);
+  //   })
+  // }
+  // const playSound = () => {
+  //   source.start(context.currenTime);
+  // }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (setupAudio);
@@ -429,11 +468,9 @@ __webpack_require__.r(__webpack_exports__);
 // ==============================
  // import setupVisuals from './audiovisuals.js';
 
- // import blackhole from './blackhole';
 
 document.addEventListener('DOMContentLoaded', function () {
-  Object(_audiovisualization__WEBPACK_IMPORTED_MODULE_0__["default"])(); // blackhole();
-
+  Object(_audiovisualization__WEBPACK_IMPORTED_MODULE_0__["default"])();
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;

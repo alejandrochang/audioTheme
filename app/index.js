@@ -11,11 +11,9 @@
 import setupAudio from './audiovisualization';
 // import setupVisuals from './audiovisuals.js';
 import setupBackground from './background.js';
-// import blackhole from './blackhole';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupAudio();
-  // blackhole();
 
   const canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
