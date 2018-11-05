@@ -159,11 +159,35 @@ var setupAudio = function setupAudio() {
   var analyser = context.createAnalyser();
   var analyser2 = context.createAnalyser();
   var analyser3 = context.createAnalyser();
-  var analyser4 = context.createAnalyser();
+  var analyser4 = context.createAnalyser(); // const category = () => {
+  // switch (category) 
+  //   case value:
+  //     break;
+  //   default:
+  //     break;
+  // }
+  // hiphop[randomHipHop],
+  // house[randomHouse],
+  // randb[randomRandb],
+  // onehitwonders[oneHitWonders],
+  // classical[classicalMusic],
+  // alternative[alternativeMusic]
+  // let housemusic = document.getElementById('house-music').addEventListener('click', function() {
+  //   return house[randomHouse]
+  // })
+  // const chosenCategory = (...categories) {
+  //   switch (key) {
+  //     case value:
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
   function start() {
-    bufferLoader = new BufferLoader(context, [// hiphop[randomHipHop],
-    house[randomHouse]], finishedLoading);
+    bufferLoader = new BufferLoader(context, [//  hiphop[randomHipHop],
+    // house[randomHouse],
+    randb[randomRandb]], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
     analyser.fftSize = 2048;

@@ -87,14 +87,45 @@ function BufferLoader(context, urlList, callback) {
   const analyser3 = context.createAnalyser();
   const analyser4 = context.createAnalyser();
 
+  // const category = () => {
+  // switch (category) 
+  //   case value:
+      
+  //     break;
+  
+  //   default:
+  //     break;
+  // }
+  // hiphop[randomHipHop],
+  // house[randomHouse],
+  // randb[randomRandb],
+  // onehitwonders[oneHitWonders],
+  // classical[classicalMusic],
+  // alternative[alternativeMusic]
+  
+  // let housemusic = document.getElementById('house-music').addEventListener('click', function() {
+  //   return house[randomHouse]
+
+  // })
+
+  // const chosenCategory = (...categories) {
+  //   switch (key) {
+  //     case value:
+        
+  //       break;
+    
+  //     default:
+  //       break;
+  //   }
+  // }
 
   function start() {
     bufferLoader = new BufferLoader(
       context,
       [
-        // hiphop[randomHipHop],
-        house[randomHouse],
-        // randb[randomRandb],
+        //  hiphop[randomHipHop],
+        // house[randomHouse],
+        randb[randomRandb],
         // onehitwonders[oneHitWonders],
         // classical[classicalMusic],
         // alternative[alternativeMusic]
