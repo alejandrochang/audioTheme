@@ -1,23 +1,80 @@
 # Overview
 
-Play different types of music for whatever ocassion with visually appealing animations in the background responding to the music. Import music whenever you want and watch it come to life. 
+AudioTheme allows you to play different types of music for whatever ocassion with visually appealing animations. It gives the user flexibility to either import their own individual music or to choose from a pre-existing music category. 
 
 # Functionality
    * Users can upload mp3 files and play them from the main page
-   * Users can choose from different categories to play their favorite type of music
+   * Users can choose from different categories to play their favorite type of music genre
    * Interactive background with music visuals based on frequency
-   * Audio visuals are displayed at the sound of certain pitches and outputs of noise the music produces
+   * Audio visuals are demonstrated through certain pitches and sounds that the music chosen produces
 
 # Wireframes
-The app will consist of a single page with a play/mute button, a dropdown for the choice of two different visualizations, a file submit button that allows the user to import a music file and a dropdown for the different types of music the user can choose. The music will be rendered through in-built music options and genres. 
+The app will consist of a play/mute button, a dropdown for the choice of two different audio themes, a file submit button that allows the user to import a music file and a dropdown for the different types of music the user can choose. The music will be rendered through in-built music options and genres. 
 
-<img src="./assets/images/circle.png">
+<img src="./assets/images/ss4.png">
 
 ### Technologies Employed
  * Vanilla Javascript (for audio)
- * HTML5 Canvas (for visuals)
- * CSS (for visuals)
+
+ ```javascript
+   function start() {
+    bufferLoader = new BufferLoader(
+      context,
+      [
+        hiphop[randomHipHop],
+        house[randomHouse],
+        randb[randomRandb],
+        onehitwonders[oneHitWonders],
+        classical[classicalMusic],
+        alternative[alternativeMusic]
+      ],
+      finishedLoading
+    );
+
+    bufferLoader.load();
     
+    // audio analyzers
+    analyser.fftSize = 2048;
+    analyser2.fftSize = 32;
+    analyser3.fftSize = 512;
+    analyser4.fftSize = 256;
+
+    var bufferLength = analyser.frequencyBinCount;
+    var dataArray = new Uint8Array(bufferLength);
+ ```
+
+ * HTML5 Canvas (for visuals)
+    ```javascript
+    const canvas = document.getElementById("analyser-render");
+    canvas.width = window.innerWidth - 2;
+    canvas.height = window.innerHeight - 2;
+    const canvasCtx = canvas.getContext("2d");
+
+    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    function draw() {
+      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+      requestAnimationFrame(draw);
+
+      analyser.getByteTimeDomainData(dataArray);
+      analyser.getByteFrequencyData(dataArray2);
+      analyser.getByteFrequencyData(dataArray3);
+      analyser.getByteFrequencyData(dataArray4);
+
+
+      canvasCtx.lineWidth = 3.15;
+      function r() {
+        return Math.floor(Math.random() * 255);
+      }
+
+      canvasCtx.strokeStyle = "rgb(" + r() + "," + 0 + "," + r() + ")";
+      canvasCtx.beginPath();
+      var sliceWidth = canvas.width * 1.0 / bufferLength;
+      var x = 0;
+     ``` 
+ * CSS (for visuals)
+
 <img src="./assets/images/photo2.png">
 
 ### Main files
@@ -39,11 +96,11 @@ Day 1:
 Day 2:
  * [X] Research and implementation of backgrounds for files
  * [X] Functionality of playing music on the page
- * [] Functionality of allowing user to input a file to play music
+ * [ ] Functionality of allowing user to input a file to play music
 
 Day 3:
  * [X] Implement the visualizations for the background
- * [] Visualization functionality and dropdown
+ * [ ] Visualization functionality and dropdown
  * [X] Link to SoundCloud / import music for testing
 
  

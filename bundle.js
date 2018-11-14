@@ -186,8 +186,12 @@ var setupAudio = function setupAudio() {
 
   function start() {
     bufferLoader = new BufferLoader(context, [//  hiphop[randomHipHop],
-    // house[randomHouse],
-    randb[randomRandb]], finishedLoading);
+      // house[randomHouse],
+      // randb[randomRandb],
+      // onehitwonders[oneHitWonders],
+      // classical[classicalMusic],
+      // alternative[alternativeMusic]
+    ], finishedLoading);
     bufferLoader.load(); // audio analyzers
 
     analyser.fftSize = 2048;

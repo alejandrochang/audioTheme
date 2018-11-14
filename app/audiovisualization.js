@@ -125,7 +125,7 @@ function BufferLoader(context, urlList, callback) {
       [
         //  hiphop[randomHipHop],
         // house[randomHouse],
-        randb[randomRandb],
+        // randb[randomRandb],
         // onehitwonders[oneHitWonders],
         // classical[classicalMusic],
         // alternative[alternativeMusic]
