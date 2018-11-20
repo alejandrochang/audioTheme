@@ -308,12 +308,12 @@ var setupAudio = function setupAudio() {
     for (var i = 0; i < this.urlList.length; ++i) {
       this.loadBuffer(this.urlList[i], i);
     }
-  };
-
-  var hm = document.querySelector('house-music'); // functionality for sound player
+  }; // let hm = document.querySelector('house-music');
+  // functionality for sound player
   // document.querySelector('.stop-button').addEventListener('click', stop);
   // document.querySelector('.stop-button').addEventListener('click', stop);
   // document.querySelector(".button-play").addEventListener("click", start);
+
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (setupAudio); // const playSound = (bufferList) => {

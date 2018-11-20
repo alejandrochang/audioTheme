@@ -260,7 +260,7 @@ function BufferLoader(context, urlList, callback) {
       this.loadBuffer(this.urlList[i], i);
   }
 
-  let hm = document.querySelector('house-music');
+  // let hm = document.querySelector('house-music');
   // functionality for sound player
   // document.querySelector('.stop-button').addEventListener('click', stop);
 
