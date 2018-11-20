@@ -11,7 +11,7 @@ AudioTheme allows you to play different types of music for whatever ocassion wit
 # Wireframes
 The app will consist of a play/mute button, a dropdown for the choice of two different audio themes, a file submit button that allows the user to import a music file and a dropdown for the different types of music the user can choose. The music will be rendered through in-built music options and genres. 
 
-<img src="./assets/images/ss4.png">
+<img src="./assets/images/ss5.png">
 
 ### Technologies Employed
  * Vanilla Javascript (for audio)
@@ -42,8 +42,11 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
     var bufferLength = analyser.frequencyBinCount;
     var dataArray = new Uint8Array(bufferLength);
  ```
+ * CSS/HTML (for visuals)
 
- * HTML5 Canvas (for visuals)
+<img src="./assets/images/photo2.png">
+
+ * JS Canvas (for visuals)
     ```javascript
     const canvas = document.getElementById("analyser-render");
     canvas.width = window.innerWidth - 2;
@@ -59,9 +62,6 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
 
       analyser.getByteTimeDomainData(dataArray);
       analyser.getByteFrequencyData(dataArray2);
-      analyser.getByteFrequencyData(dataArray3);
-      analyser.getByteFrequencyData(dataArray4);
-
 
       canvasCtx.lineWidth = 3.15;
       function r() {
@@ -73,9 +73,6 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
       var sliceWidth = canvas.width * 1.0 / bufferLength;
       var x = 0;
      ``` 
- * CSS (for visuals)
-
-<img src="./assets/images/photo2.png">
 
 ### Main files
  * Pick an interactive background that can be used for all different types of music
@@ -115,7 +112,7 @@ Weekend:
  
  
 # Future Features may include
- * Complete Functionality of Project
+ * Completion of Project
  * Connect the SoundCloud API to music to generate all kinds of music
  * Multiple pages for different types of music
  * Additional page for music uploading files and music rendering/bars visualization
