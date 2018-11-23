@@ -15,16 +15,35 @@
       }
     </style>
     <script>
-      let audio, playbtn, seek_bar;
-      function initAudioPlayer() {
-        audio = new Audio();
-        audio.src = "./assets/music/2009.mp3";
-        audio.loop = true;
-        if (!audio.isPlaying) {
-          audio.play();
-        }
-      }
-    window.addEventListener("load", initAudioPlayer);
+    //   let audio, playbtn, mutebtn, seek_bar;
+    //   function initAudioPlayer() {
+    //     audio = new Audio();
+    //     audio.src = "./assets/music/2009.mp3";
+    //     audio.loop = true;
+    //     audio.play();
+        
+    //     playbtn = document.getElementById('button-play');
+    //     mutebtn = document.getElementById('mute-button');
+        
+    //     playbtn.addEventListener("click", playPause);
+    //     mutebtn.addEventListener("click", mute);
+
+    //     function playPause() {
+    //       if (audio.paused) {
+    //         audio.play();
+    //       } else {
+    //         audio.pause();
+    //       }
+    //     }
+    //     function mute() {
+    //       if (audio.muted) {
+    //         audio.muted = false;
+    //       } else {
+    //         audio.muted = true;
+    //       }
+    //     }
+    //   }
+    // window.addEventListener("load", initAudioPlayer);
     </script>
 </head>
 <body>
@@ -45,13 +64,13 @@
             <option class="option-hover">Visuals</option>
             <option id="relax">Study</option>
           </select>
-          <button class="button-play">
+          <button id="button-play">
             <img class ="play-img" src="https://www.mullaloobeachhotel.com.au/wp-content/uploads/2016/03/play.png" alt="Play/Pause">
           </button>
-          <button class="button-play2">
+          <button id="mute-button">
             <img class="forward-img" src="https://www.shareicon.net/data/2016/03/27/465693_media_256x256.png" alt="Next">
           </button>
-          <button class="stop-button">
+          <button id="stop-button">
           <img class="stop-img" src="https://cdn2.iconfinder.com/data/icons/media-player-ui/512/Media-Icon-20-512.png" alt="Stop">
           </button>
           <!-- <button class="personal site"></button> -->
