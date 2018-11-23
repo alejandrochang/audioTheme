@@ -231,24 +231,33 @@ var setupAudio = function setupAudio() {
     draw();
   }
 
-  var audio, playbtn, mutebtn;
+  var audio, playbtn, mutebtn, pausebtn;
 
   function initAudioPlayer() {
     audio = new Audio();
-    audio.src = hiphop[randomHipHop]; // audio.loop = true;
-
+    audio.src = hiphop[randomHipHop];
     audio.play();
     playbtn = document.getElementById('button-play');
     mutebtn = document.getElementById('mute-button');
-    playbtn.addEventListener("click", playPause);
+    pausebtn = document.getElementById('pause-button');
+    playbtn.addEventListener("click", play);
     mutebtn.addEventListener("click", mute);
+    pausebtn.addEventListener("click", pause);
 
-    function playPause() {
+    function play() {
       if (audio.paused) {
         audio.play();
-      } else {
+      }
+
+      ;
+    }
+
+    function pause() {
+      if (!audio.paused) {
         audio.pause();
       }
+
+      ;
     }
 
     function mute() {
@@ -261,7 +270,9 @@ var setupAudio = function setupAudio() {
 
     var source = context.createMediaElementSource(audio);
     source.connect(analyser);
-    analyser.connect(context.destination);
+    analyser.connect(context.destination); // setVolume = function (id, vol) {
+    //   sounds[id].volume = vol; // vol between 0 and 1
+    // }
   }
 
   window.addEventListener("load", initAudioPlayer);
@@ -350,7 +361,6 @@ __webpack_require__.r(__webpack_exports__);
 // ================================
 // START YOUR APP HERE
 // ==============================
- // import setupVisuals from './audiovisuals.js';
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -358,9 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  var context = canvas.getContext('2d'); // setupVisuals();
-
-  Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  var context = canvas.getContext('2d'); // setupBackground();
 });
 
 /***/ })

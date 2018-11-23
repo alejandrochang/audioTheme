@@ -151,27 +151,33 @@ const setupAudio = () => {
     draw();
   }
 
-    let audio, playbtn, mutebtn;
+    let audio, playbtn, mutebtn, pausebtn;
 
       function initAudioPlayer() {
         audio = new Audio();
         audio.src = hiphop[randomHipHop];
-        // audio.loop = true;
         audio.play();
 
         playbtn = document.getElementById('button-play');
         mutebtn = document.getElementById('mute-button');
+        pausebtn = document.getElementById('pause-button');
 
-        playbtn.addEventListener("click", playPause);
+        playbtn.addEventListener("click", play);
         mutebtn.addEventListener("click", mute);
+        pausebtn.addEventListener("click", pause);
 
-        function playPause() {
+        function play() {
           if (audio.paused) {
             audio.play();
-          } else {
-            audio.pause();
-          }
+          };
         }
+
+        function pause() {
+          if (!audio.paused) {
+            audio.pause();
+          };
+        }
+
         function mute() {
           if (audio.muted) {
             audio.muted = false;
@@ -183,6 +189,10 @@ const setupAudio = () => {
         var source = context.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(context.destination);
+
+        // setVolume = function (id, vol) {
+        //   sounds[id].volume = vol; // vol between 0 and 1
+        // }
       }
     window.addEventListener("load", initAudioPlayer);
 }

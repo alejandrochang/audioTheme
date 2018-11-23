@@ -158,12 +158,12 @@ select {
   padding: 3px 3px 3px 3px;
   border-color: #000;
   cursor: pointer;
-  position: relative;
   right: 154px;
   outline: none;
+  position: relative;
 }
 
-#mute-play2 {
+#mute-button {
   width: 44px;
   height: 44px;
   background-color: #000;
@@ -201,11 +201,14 @@ img#github {
 }
 
 .stop-img {
-  width: 0px;
-  height: 0px;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  right: 16px;
+  bottom: 9px;
 }
 
-#stop-button {
+#pause-button {
   position: absolute; 
   width: 22px; 
   height: 22px; 

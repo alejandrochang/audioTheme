@@ -14,37 +14,6 @@
         border: 1px solid;
       }
     </style>
-    <script>
-    //   let audio, playbtn, mutebtn, seek_bar;
-    //   function initAudioPlayer() {
-    //     audio = new Audio();
-    //     audio.src = "./assets/music/2009.mp3";
-    //     audio.loop = true;
-    //     audio.play();
-        
-    //     playbtn = document.getElementById('button-play');
-    //     mutebtn = document.getElementById('mute-button');
-        
-    //     playbtn.addEventListener("click", playPause);
-    //     mutebtn.addEventListener("click", mute);
-
-    //     function playPause() {
-    //       if (audio.paused) {
-    //         audio.play();
-    //       } else {
-    //         audio.pause();
-    //       }
-    //     }
-    //     function mute() {
-    //       if (audio.muted) {
-    //         audio.muted = false;
-    //       } else {
-    //         audio.muted = true;
-    //       }
-    //     }
-    //   }
-    // window.addEventListener("load", initAudioPlayer);
-    </script>
 </head>
 <body>
   <div id="gradient">
@@ -68,10 +37,10 @@
             <img class ="play-img" src="https://www.mullaloobeachhotel.com.au/wp-content/uploads/2016/03/play.png" alt="Play/Pause">
           </button>
           <button id="mute-button">
-            <img class="forward-img" src="https://www.shareicon.net/data/2016/03/27/465693_media_256x256.png" alt="Next">
+            <img class="forward-img" src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/mute-icon-18-256.png" alt="Next">
           </button>
-          <button id="stop-button">
-          <img class="stop-img" src="https://cdn2.iconfinder.com/data/icons/media-player-ui/512/Media-Icon-20-512.png" alt="Stop">
+          <button id="pause-button">
+          <img class="stop-img" src="http://theologygaming.com/wp-content/uploads/2014/08/pause.png" alt="Stop">
           </button>
           <!-- <button class="personal site"></button> -->
           <select id="genre-dropdown">
@@ -84,10 +53,15 @@
             <option>Study/Chill-hop</option>
             <option>Alternative Rock</option>
           </select>
-          <a class="link1" target="_blank" href="https://github.com/alejandrochang"><img style="height: 35px;position: absolute;top: 5px;right: 60px;" alt="Github profile" src="https://www.omnilayer.org/images/github-iconOutline.svg"></a>
-          <a class="link2" target="_blank" href="https://www.linkedin.com/in/alejandro-chang-086936126/"><img id="linkedin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn profile" style="height: 35px;position: absolute;top: 5px;right: 15px;"></a>
+          <a class="link1" target="_blank" rel="noopener noreferrer" href="https://github.com/alejandrochang"><img style="height: 35px;position: absolute;top: 5px;right: 60px;" alt="Github profile" src="https://www.omnilayer.org/images/github-iconOutline.svg"></a>
+          <a class="link2" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/alejandro-chang-086936126/"><img id="linkedin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn profile" style="height: 35px;position: absolute;top: 5px;right: 15px;"></a>
           <img class="volume-icon" src="https://openclipart.org/image/2400px/svg_to_png/235441/minimal-speaker-icon.png">
-          <input id="volume-slider" type="range" value="100">
+          <input id="volume-slider" type="range" min="5" max="10" step="1" onchange="setVolume">
+          <script>
+            function setVolume(id, vol) {
+              sounds[id].volume = vol; // vol between 0 and 1
+            }
+          </script>
         </div>
       </div>
       <canvas id="analyser-render" width="1900px" height="923px"></canvas>
