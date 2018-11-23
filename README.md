@@ -16,31 +16,48 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
 ### Technologies Employed
  * Vanilla Javascript (for audio)
 
+At first I decided to user the Web Audio API BufferLoader which would store songs in an array and then pass them along as nodes to frquencies. However, it became very difficult to integrate into vanilla javascript for the fucntionality of the application. This led me to explore other options. I ended up settling on using the HTML5 AudioElement which was completely flexible, intuitive and overall much cleaner and consice code. I integrated some vanilla JS and connected my music to canvas allowing me to render visualing movmement 2d animations. 
+
  ```javascript
-   function start() {
-    bufferLoader = new BufferLoader(
-      context,
-      [
-        hiphop[randomHipHop],
-        house[randomHouse],
-        randb[randomRandb],
-        onehitwonders[oneHitWonders],
-        classical[classicalMusic],
-        alternative[alternativeMusic]
-      ],
-      finishedLoading
-    );
+ let audio, playbtn, mutebtn, pausebtn;
 
-    bufferLoader.load();
-    
-    // audio analyzers
-    analyser.fftSize = 2048;
-    analyser2.fftSize = 32;
-    analyser3.fftSize = 512;
-    analyser4.fftSize = 256;
+      function initAudioPlayer() {
+        audio = new Audio();
+        audio.src = hiphop[randomHipHop];
+        audio.play();
 
-    var bufferLength = analyser.frequencyBinCount;
-    var dataArray = new Uint8Array(bufferLength);
+        playbtn = document.getElementById('button-play');
+        mutebtn = document.getElementById('mute-button');
+        pausebtn = document.getElementById('pause-button');
+
+        playbtn.addEventListener("click", play);
+        mutebtn.addEventListener("click", mute);
+        pausebtn.addEventListener("click", pause);
+
+        function play() {
+          if (audio.paused) {
+            audio.play();
+          };
+        }
+
+        function pause() {
+          if (!audio.paused) {
+            audio.pause();
+          };
+        }
+
+        function mute() {
+          if (audio.muted) {
+            audio.muted = false;
+          } else {
+            audio.muted = true;
+          }
+        }
+
+        var source = context.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(context.destination);
+      }
  ```
  * CSS/HTML (for visuals)
 
@@ -82,7 +99,7 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
  * [X] Basic interactive visuals with an interactive homepage
  * [ ] Options for two different visualization styles based on music
  * [ ] User can input mp3 files through the main page
- * [X] User can choose different music types based on different criteria
+ * [X] User can choose different music types/genres
 
 ## Developemnt timeline
 
@@ -112,7 +129,6 @@ Weekend:
  
  
 # Future Features may include
- * Completion of Project
- * Connect the SoundCloud API to music to generate all kinds of music
- * Multiple pages for different types of music
- * Additional page for music uploading files and music rendering/bars visualization
+ * Connect the SoundCloud API to music to generate all kinds of music (maybe)
+ * Multiple pages for different types of music (study theme)
+ * Additional page for music uploading files and music rendering/bars visualization(optional)

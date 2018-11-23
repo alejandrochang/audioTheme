@@ -122,12 +122,6 @@ var setupAudio = function setupAudio() {
   var analyser4 = context.createAnalyser();
 
   function start() {
-    //  hiphop[randomHipHop],
-    // house[randomHouse],
-    // randb[randomRandb],
-    // onehitwonders[oneHitWonders],
-    // classical[classicalMusic],
-    // alternative[alternativeMusic]
     // audio analyzers
     analyser.fftSize = 2048;
     analyser2.fftSize = 32;
