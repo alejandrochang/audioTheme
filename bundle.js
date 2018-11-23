@@ -270,9 +270,7 @@ var setupAudio = function setupAudio() {
 
     var source = context.createMediaElementSource(audio);
     source.connect(analyser);
-    analyser.connect(context.destination); // setVolume = function (id, vol) {
-    //   sounds[id].volume = vol; // vol between 0 and 1
-    // }
+    analyser.connect(context.destination);
   }
 
   window.addEventListener("load", initAudioPlayer);
@@ -368,7 +366,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  var context = canvas.getContext('2d'); // setupBackground();
+  var context = canvas.getContext('2d');
+  Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 
 /***/ })

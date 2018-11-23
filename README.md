@@ -97,13 +97,13 @@ Day 2:
 
 Day 3:
  * [X] Implement the visualizations for the background
- * [ ] Visualization functionality and dropdown
+ * [X] Visualization functionality and dropdown
  * [X] Link to SoundCloud / import music for testing
 
  
 Day 4:
- * [ ] Complete testing 
- * [ ] Make sure all functinoality is good
+ * [X] Complete testing 
+ * [X] Make sure all functinoality is good
  * [X] Add CSS styling to missing places
  
 Weekend:

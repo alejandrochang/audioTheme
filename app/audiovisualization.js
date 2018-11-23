@@ -189,10 +189,6 @@ const setupAudio = () => {
         var source = context.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(context.destination);
-
-        // setVolume = function (id, vol) {
-        //   sounds[id].volume = vol; // vol between 0 and 1
-        // }
       }
     window.addEventListener("load", initAudioPlayer);
 }
