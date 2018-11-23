@@ -16,7 +16,7 @@ The app will consist of a play/mute button, a dropdown for the choice of two dif
 ### Technologies Employed
  * Vanilla Javascript (for audio)
 
-At first I decided to user the Web Audio API BufferLoader which would store songs in an array and then pass them along as nodes to frquencies. However, it became very difficult to integrate into vanilla javascript for the fucntionality of the application. This led me to explore other options. I ended up settling on using the HTML5 AudioElement which was completely flexible, intuitive and overall much cleaner and consice code. I integrated some vanilla JS and connected my music to canvas allowing me to render visualing movmement 2d animations. 
+At first I decided to user the Web Audio API BufferLoader which would store songs in an array and then pass them along as nodes to frquencies. However, it became very difficult to integrate using vanilla javascript for the functionality of the application. This led me to explore other options. I ended up settling on using the HTML5 AudioElement which was completely flexible, intuitive and overall much cleaner and consice code. I integrated some vanilla JS and connected my music to canvas allowing me to render 2d animations. 
 
  ```javascript
  let audio, playbtn, mutebtn, pausebtn;
@@ -61,7 +61,7 @@ At first I decided to user the Web Audio API BufferLoader which would store song
  ```
  * CSS/HTML (for visuals)
 
-<img src="./assets/images/photo2.png">
+![](/assets/images/audioTheme.gif)
 
  * JS Canvas (for visuals)
     ```javascript
