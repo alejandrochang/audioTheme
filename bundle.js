@@ -110,9 +110,7 @@ var setupAudio = function setupAudio() {
   // let classicRock = Math.floor(Math.random() * classicrock.length);
 
   var alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3'];
-  var alternativeMusic = Math.floor(Math.random() * alternative.length); // const study = [''];
-  // let studyMusic =Math.floor(Math.random() * study.length);
-
+  var alternativeMusic = Math.floor(Math.random() * alternative.length);
   window.onload = start;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   var context = new AudioContext();
@@ -180,20 +178,17 @@ var setupAudio = function setupAudio() {
         var y = dataArray[_i];
         var w = dataArray3[_i];
         var m = dataArray4[_i];
-      } // circle canvas
-      // find the center of the window
+      } // circle canvas (all circles)
 
 
       var center_x = canvas.width / 2;
       var center_y = canvas.height / 2;
       var radius = z;
       canvasCtx.lineWidth = 2.3;
-      canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")"; //circle
-
+      canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
-      canvasCtx.stroke(); //second circle
-
+      canvasCtx.stroke();
       var cx = canvas.width / 2;
       var cy = canvas.height / 2;
       var radius2 = y;
@@ -201,8 +196,7 @@ var setupAudio = function setupAudio() {
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
-      canvasCtx.stroke(); //third circle
-
+      canvasCtx.stroke();
       var cx2 = canvas.width / 2;
       var cy2 = canvas.height / 2;
       var radius3 = w;
@@ -210,8 +204,7 @@ var setupAudio = function setupAudio() {
       canvasCtx.strokeStyle = "rgb(" + r() + "," + r() + "," + r() + ")";
       canvasCtx.beginPath();
       canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
-      canvasCtx.stroke(); //fourth circle
-
+      canvasCtx.stroke();
       var cx3 = canvas.width / 2;
       var cy3 = canvas.height / 2;
       var radius4 = m;
@@ -225,7 +218,7 @@ var setupAudio = function setupAudio() {
     draw();
   }
 
-  var audio, playbtn, mutebtn, pausebtn;
+  var audio, playbtn, mutebtn, pausebtn, volumeSlider;
 
   function initAudioPlayer() {
     audio = new Audio();
@@ -234,6 +227,14 @@ var setupAudio = function setupAudio() {
     playbtn = document.getElementById('button-play');
     mutebtn = document.getElementById('mute-button');
     pausebtn = document.getElementById('pause-button');
+    volumeSlider = document.getElementById('volume-slider');
+
+    var setVolume = function setVolume() {
+      audio.volume = this.value / 100;
+    };
+
+    volumeSlider.addEventListener('change', setVolume);
+    volumeSlider.addEventListener('input', setVolume);
     playbtn.addEventListener("click", play);
     mutebtn.addEventListener("click", mute);
     pausebtn.addEventListener("click", pause);
@@ -285,15 +286,10 @@ var setupAudio = function setupAudio() {
 __webpack_require__.r(__webpack_exports__);
 var setupBackground = function setupBackground() {
   var colors = new Array([62, 35, 255], [60, 255, 60], [255, 35, 98], [45, 175, 230], [255, 0, 255], [255, 128, 0]);
-  var step = 0; //color table indices for: 
-  // current color left
-  // next color left
-  // current color right
-  // next color right
+  var step = 0; //color table indices for: (current color left next color left current color right next color right)
 
-  var colorIndices = [0, 1, 2, 3]; //transition speed
-
-  var gradientSpeed = 0.002;
+  var colorIndices = [0, 1, 2, 3];
+  var gradientSpeed = 0.002; //transition speed
 
   function updateGradient() {
     if ($ === undefined) return;
@@ -346,13 +342,6 @@ var setupBackground = function setupBackground() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _audiovisualization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audiovisualization */ "./app/audiovisualization.js");
 /* harmony import */ var _background_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./background.js */ "./app/background.js");
-/**
- * Application entry point
- */
-// Load application styles
-// ================================
-// START YOUR APP HERE
-// ==============================
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -360,7 +349,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  var context = canvas.getContext('2d');
   Object(_background_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 

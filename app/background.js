@@ -9,18 +9,11 @@ const setupBackground = () => {
     [255, 128, 0]);
 
   var step = 0;
-  //color table indices for: 
-  // current color left
-  // next color left
-  // current color right
-  // next color right
+  //color table indices for: (current color left next color left current color right next color right)
   var colorIndices = [0, 1, 2, 3];
-
-  //transition speed
-  var gradientSpeed = 0.002;
+  var gradientSpeed = 0.002; //transition speed
 
   function updateGradient() {
-
     if ($ === undefined) return;
 
     var c0_0 = colors[colorIndices[0]];

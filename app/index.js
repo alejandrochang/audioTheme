@@ -1,13 +1,3 @@
-/**
- * Application entry point
- */
-
-// Load application styles
-
-// ================================
-// START YOUR APP HERE
-// ==============================
-
 import setupAudio from './audiovisualization';
 import setupBackground from './background.js';
 
@@ -17,6 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('analyser-render');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  const context = canvas.getContext('2d');
   setupBackground();
 }); 

@@ -15,9 +15,6 @@
   width: 320px;
   font-family: 'Merriweather', serif;
 }
-#title span {
-  /* color: #b8bac1; */
-}
 
 .subtitle span {
   font-size: 18px;
@@ -26,7 +23,6 @@
   left: 60px;
   top: 50px;
 }
-
 /* Non-background */
 
 option {
@@ -57,6 +53,7 @@ select {
   -webkit-border-radius: 2px 0 0 2px;
   -moz-border-radius: 2px 0 0 2px;
   border-radius: 2px 0 0 2px;
+  outline: none;
 } 
 
 .controls-container {
@@ -208,8 +205,4 @@ img#github {
   top: 11px;
   outline: none;
   cursor: pointer;
-}
-
-.house-music {
-  
 }

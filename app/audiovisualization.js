@@ -19,8 +19,6 @@ const setupAudio = () => {
   // let classicRock = Math.floor(Math.random() * classicrock.length);
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
   let alternativeMusic = Math.floor(Math.random() * alternative.length);
-  // const study = [''];
-  // let studyMusic =Math.floor(Math.random() * study.length);
 
   window.onload = start;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -32,7 +30,6 @@ const setupAudio = () => {
   const analyser4 = context.createAnalyser();
 
   function start() {
-
     // audio analyzers
     analyser.fftSize = 2048;
     analyser2.fftSize = 32;
@@ -53,14 +50,12 @@ const setupAudio = () => {
     canvas.width = window.innerWidth - 2;
     canvas.height = window.innerHeight - 2;
     const canvasCtx = canvas.getContext("2d");
-
     canvasCtx.fillStyle = 'rgb(200, 200, 200)';
     canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
     function draw() {
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
       requestAnimationFrame(draw);
-
       analyser.getByteTimeDomainData(dataArray);
       analyser.getByteFrequencyData(dataArray2);
       analyser.getByteFrequencyData(dataArray3);
@@ -80,7 +75,6 @@ const setupAudio = () => {
       for (var i = 0; i < bufferLength; i++) {
         var v = dataArray[i] - 128;
         var y = v + canvas.height / 2;
-
         if (i === 0) {
           canvasCtx.moveTo(x, y);
         } else {
@@ -88,7 +82,6 @@ const setupAudio = () => {
         }
         x += sliceWidth;
       }
-
       canvasCtx.stroke();
 
       for (let i = 0; i < bufferLength2; i++) {
@@ -98,20 +91,16 @@ const setupAudio = () => {
         var m = dataArray4[i];
       }
 
-      // circle canvas
-      // find the center of the window
+      // circle canvas (all circles)
       const center_x = canvas.width / 2;
       const center_y = canvas.height / 2;
       const radius = z;
       canvasCtx.lineWidth = 2.3;
       canvasCtx.strokeStyle = "rgb(" + 0 + "," + r() + "," + 0 + ")";
-
-      //circle
       canvasCtx.beginPath();
       canvasCtx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
-      //second circle
       const cx = (canvas.width / 2);
       const cy = (canvas.height / 2);
       let radius2 = y;
@@ -121,7 +110,6 @@ const setupAudio = () => {
       canvasCtx.arc(cx, cy, radius2, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
-      //third circle
       const cx2 = canvas.width / 2;
       const cy2 = canvas.height / 2;
       let radius3 = w;
@@ -131,7 +119,6 @@ const setupAudio = () => {
       canvasCtx.arc(cx2, cy2, radius3, 0, 2 * Math.PI);
       canvasCtx.stroke();
 
-      //fourth circle
       const cx3 = canvas.width / 2;
       const cy3 = canvas.height / 2;
       let radius4 = m;
@@ -145,8 +132,7 @@ const setupAudio = () => {
     draw();
   }
 
-    let audio, playbtn, mutebtn, pausebtn;
-
+    let audio, playbtn, mutebtn, pausebtn, volumeSlider;
       function initAudioPlayer() {
         audio = new Audio();
         audio.src = hiphop[randomHipHop];
@@ -155,6 +141,11 @@ const setupAudio = () => {
         playbtn = document.getElementById('button-play');
         mutebtn = document.getElementById('mute-button');
         pausebtn = document.getElementById('pause-button');
+        volumeSlider = document.getElementById('volume-slider');
+
+        var setVolume = function () { audio.volume = this.value / 100; };
+        volumeSlider.addEventListener('change', setVolume);
+        volumeSlider.addEventListener('input', setVolume);
 
         playbtn.addEventListener("click", play);
         mutebtn.addEventListener("click", mute);
@@ -179,7 +170,6 @@ const setupAudio = () => {
             audio.muted = true;
           }
         }
-
         var source = context.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(context.destination);
