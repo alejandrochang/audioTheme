@@ -3,21 +3,22 @@ const setupAudio = () => {
   const hiphop = ["./assets/music/sundaycandy.mp3", "./assets/music/babyblue.mp3", "./assets/music/tuesday.mp3", "./assets/music/tuscanleather.mp3", "./assets/music/comebacktoearth.mp3", "./assets/music/january28.mp3", "./assets/music/anziety.mp3", "./assets/music/2009.mp3", "./assets/music/allido.mp3",
     "./assets/music/everydayshelter.mp3", './assets/music/slowjamz.mp3', './assets/music/girlsthatdance.mp3', './assets/music/happy.mp3',
     './assets/music/heavenonlyknows.mp3',];
-  let randomHipHop = Math.floor(Math.random() * hiphop.length);
   const house = ['./assets/music/randomaccessmemories.mp3', './assets/music/igotu.mp3', './assets/music/comingover.mp3', './assets/music/firestone.mp3', './assets/music/tenniscourt.mp3', './assets/music/redlights.mp3',
     './assets/music/sleepless.mp3', './assets/music/stayhigh.mp3', './assets/music/tomorrowland.mp3', './assets/music/espoir.mp3', './assets/music/sunandmoon.mp3',
     './assets/music/hothands.mp3',];
-  let randomHouse = Math.floor(Math.random() * house.length);
   const randb = ['./assets/music/thinkingaboutyou.mp3', './assets/music/doyou.mp3', './assets/music/openyoureyes.mp3', './assets/music/getyou.mp3',
     './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
-  let randomRandb = Math.floor(Math.random() * randb.length);
   const onehitwonders = ['./assets/music/staytogether.mp3', './assets/music/dancinginthemoonlight.mp3', './assets/music/icanthelpmyself.mp3', './assets/music/september.mp3'];
-  let oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
   const classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3',];
-  let classicalMusic = Math.floor(Math.random() * classical.length);
   // const classicrock = [''];
   // let classicRock = Math.floor(Math.random() * classicrock.length);
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
+
+  let randomHipHop = Math.floor(Math.random() * hiphop.length);
+  let randomHouse = Math.floor(Math.random() * house.length);
+  let randomRandb = Math.floor(Math.random() * randb.length);
+  let oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
+  let classicalMusic = Math.floor(Math.random() * classical.length);
   let alternativeMusic = Math.floor(Math.random() * alternative.length);
 
   window.onload = start;
@@ -138,14 +139,23 @@ const setupAudio = () => {
         audio.src = hiphop[randomHipHop];
         audio.play();
 
+        // let houseEl = document.getElementById('house-music');
+        // houseEl.addEventListener("change", function() {
+        //   if (audio.src !== house[randomHouse]) {
+        //     audio.src = house[randomHouse];
+        //     audio.load();
+        //     audio.play();
+        //   }
+        // });
+
         playbtn = document.getElementById('button-play');
         mutebtn = document.getElementById('mute-button');
         pausebtn = document.getElementById('pause-button');
         volumeSlider = document.getElementById('volume-slider');
 
-        var setVolume = function () { audio.volume = this.value / 100; };
-        volumeSlider.addEventListener('change', setVolume);
-        volumeSlider.addEventListener('input', setVolume);
+        let changeVolume = function () { audio.volume = this.value / 100; };
+        volumeSlider.addEventListener('change', changeVolume);
+        volumeSlider.addEventListener('input', changeVolume);
 
         playbtn.addEventListener("click", play);
         mutebtn.addEventListener("click", mute);
