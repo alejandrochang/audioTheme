@@ -1,6 +1,6 @@
 #title {
   position: absolute;
-  left: 30px;
+  left: 5%;
   right: 0;
   color: #FFF;
   text-align: left;
@@ -62,8 +62,8 @@ select {
   padding: 30px;
   height: 200px;
   box-sizing: border-box;
-  right: 25px;
-  top: -4px;
+  right: 5%;
+  top: 5%;
   position: absolute;
   opacity: 0.6;
   transition: opacity 6ms;
