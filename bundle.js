@@ -224,13 +224,8 @@ var setupAudio = function setupAudio() {
     audio = new Audio();
     audio.src = hiphop[randomHipHop];
     audio.play(); // let houseEl = document.getElementById('house-music');
-    // houseEl.addEventListener("change", function() {
-    //   if (audio.src !== house[randomHouse]) {
-    //     audio.src = house[randomHouse];
-    //     audio.load();
-    //     audio.play();
-    //   }
-    // });
+    // let changeGenre = function() {audio.src = house[randomHouse]};
+    // houseEl.addEventListener("onClick", changeGenre);
 
     playbtn = document.getElementById('button-play');
     mutebtn = document.getElementById('mute-button');
