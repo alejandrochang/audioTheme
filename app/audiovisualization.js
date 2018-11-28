@@ -10,7 +10,7 @@ const setupAudio = () => {
     './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
   const onehitwonders = ['./assets/music/staytogether.mp3', './assets/music/dancinginthemoonlight.mp3', './assets/music/icanthelpmyself.mp3', './assets/music/september.mp3'];
   const classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3',];
-  const study = [''];
+  const study = ["./assets/music/lofi2.mp3"];
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
 
   let randomHipHop = Math.floor(Math.random() * hiphop.length);
