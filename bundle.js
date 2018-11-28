@@ -111,6 +111,15 @@ var setupAudio = function setupAudio() {
   var oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
   var classicalMusic = Math.floor(Math.random() * classical.length);
   var alternativeMusic = Math.floor(Math.random() * alternative.length);
+  var songs = {
+    'hiphop': [hiphop[randomHipHop]],
+    'house': [house[randomHouse]],
+    'randb': [randb[randomRandb]],
+    'onehit': [onehitwonders[oneHitWonders]],
+    'classical': [classical[classicalMusic]],
+    // 'classicrock': [house[classicalMusic]],
+    'alternative-rock': [alternative[alternativeMusic]]
+  };
   window.onload = start;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   var context = new AudioContext();
@@ -224,9 +233,20 @@ var setupAudio = function setupAudio() {
     audio = new Audio();
     audio.src = hiphop[randomHipHop];
     audio.play(); // let houseEl = document.getElementById('house-music');
-    // let changeGenre = function() {audio.src = house[randomHouse]};
-    // houseEl.addEventListener("onClick", changeGenre);
+    // console.log(houseEl);
+    // let changeGenre = () => { audio.src = house[randomHouse]};
+    // addEventListener("click", changeGenre);
 
+    var changeGenre = function changeGenre(song) {
+      console.log(song);
+      audio.src = songs[song];
+    };
+
+    var gdropdown = document.getElementById('genre-dropdown');
+    gdropdown.addEventListener('change', function (_ref) {
+      var value = _ref.target.value;
+      return changeGenre(value);
+    });
     playbtn = document.getElementById('button-play');
     mutebtn = document.getElementById('mute-button');
     pausebtn = document.getElementById('pause-button');

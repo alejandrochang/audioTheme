@@ -21,6 +21,16 @@ const setupAudio = () => {
   let classicalMusic = Math.floor(Math.random() * classical.length);
   let alternativeMusic = Math.floor(Math.random() * alternative.length);
 
+  const songs = {
+    'hiphop': [hiphop[randomHipHop]],
+    'house': [house[randomHouse]],
+    'randb': [randb[randomRandb]],
+    'onehit': [onehitwonders[oneHitWonders]],
+    'classical': [classical[classicalMusic]],
+    // 'classicrock': [house[classicalMusic]],
+    'alternative-rock': [alternative[alternativeMusic]],
+  }
+
   window.onload = start;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   var context = new AudioContext();
@@ -140,14 +150,18 @@ const setupAudio = () => {
         audio.play();
 
         // let houseEl = document.getElementById('house-music');
-        // let changeGenre = function() {audio.src = house[randomHouse]};
-        // houseEl.addEventListener("onClick", changeGenre);
+        // console.log(houseEl);
+        // let changeGenre = () => { audio.src = house[randomHouse]};
+        // addEventListener("click", changeGenre);
+        const changeGenre = (song) => { console.log(song); audio.src = songs[song]}
+        let gdropdown = document.getElementById('genre-dropdown');
+        gdropdown.addEventListener('change', ( {target: { value }}) =>  changeGenre(value));
 
         playbtn = document.getElementById('button-play');
         mutebtn = document.getElementById('mute-button');
         pausebtn = document.getElementById('pause-button');
-        volumeSlider = document.getElementById('volume-slider');
 
+        volumeSlider = document.getElementById('volume-slider');
         let changeVolume = function () { audio.volume = this.value / 100; };
         volumeSlider.addEventListener('change', changeVolume);
         volumeSlider.addEventListener('input', changeVolume);
