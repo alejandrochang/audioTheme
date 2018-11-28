@@ -232,10 +232,7 @@ var setupAudio = function setupAudio() {
   function initAudioPlayer() {
     audio = new Audio();
     audio.src = hiphop[randomHipHop];
-    audio.play(); // let houseEl = document.getElementById('house-music');
-    // console.log(houseEl);
-    // let changeGenre = () => { audio.src = house[randomHouse]};
-    // addEventListener("click", changeGenre);
+    audio.play();
 
     var changeGenre = function changeGenre(song) {
       console.log(song);

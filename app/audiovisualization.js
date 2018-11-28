@@ -149,10 +149,6 @@ const setupAudio = () => {
         audio.src = hiphop[randomHipHop];
         audio.play();
 
-        // let houseEl = document.getElementById('house-music');
-        // console.log(houseEl);
-        // let changeGenre = () => { audio.src = house[randomHouse]};
-        // addEventListener("click", changeGenre);
         const changeGenre = (song) => { console.log(song); audio.src = songs[song]}
         let gdropdown = document.getElementById('genre-dropdown');
         gdropdown.addEventListener('change', ( {target: { value }}) =>  changeGenre(value));
