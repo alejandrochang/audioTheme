@@ -109,7 +109,6 @@ Day 1:
 Day 2:
  * [X] Research and implementation of backgrounds for files
  * [X] Functionality of playing music on the page
- * [ ] Functionality of allowing user to input a file to play music
 
 Day 3:
  * [X] Implement the visualizations for the background
@@ -132,4 +131,6 @@ Weekend:
  * Multiple pages for different types of music (study theme)
  * Additional page for music uploading files and music rendering/bars visualization(optional)
  * User can input mp3 files through the main page
+ * Functionality of allowing user to input a file to play music
+
 

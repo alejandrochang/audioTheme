@@ -101,25 +101,23 @@ var setupAudio = function setupAudio() {
   var house = ['./assets/music/randomaccessmemories.mp3', './assets/music/igotu.mp3', './assets/music/comingover.mp3', './assets/music/firestone.mp3', './assets/music/tenniscourt.mp3', './assets/music/redlights.mp3', './assets/music/sleepless.mp3', './assets/music/stayhigh.mp3', './assets/music/tomorrowland.mp3', './assets/music/espoir.mp3', './assets/music/sunandmoon.mp3', './assets/music/hothands.mp3'];
   var randb = ['./assets/music/thinkingaboutyou.mp3', './assets/music/doyou.mp3', './assets/music/openyoureyes.mp3', './assets/music/getyou.mp3', './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
   var onehitwonders = ['./assets/music/staytogether.mp3', './assets/music/dancinginthemoonlight.mp3', './assets/music/icanthelpmyself.mp3', './assets/music/september.mp3'];
-  var classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3']; // const classicrock = [''];
-  // let classicRock = Math.floor(Math.random() * classicrock.length);
-
+  var classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3'];
+  var study = [''];
   var alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3'];
-  var soundtracks = [""];
   var randomHipHop = Math.floor(Math.random() * hiphop.length);
   var randomHouse = Math.floor(Math.random() * house.length);
   var randomRandb = Math.floor(Math.random() * randb.length);
   var oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
   var classicalMusic = Math.floor(Math.random() * classical.length);
   var alternativeMusic = Math.floor(Math.random() * alternative.length);
-  var randomTrack = Math.floor(Math.random() * soundtracks.length);
+  var studyRand = Math.floor(Math.random() * study.length);
   var songs = {
     'hiphop': [hiphop[randomHipHop]],
     'house': [house[randomHouse]],
     'randb': [randb[randomRandb]],
     'onehit': [onehitwonders[oneHitWonders]],
     'classical': [classical[classicalMusic]],
-    // 'classicrock': [house[classicalMusic]],
+    'study': [study[studyRand]],
     'alternative-rock': [alternative[alternativeMusic]]
   };
   window.onload = start;
