@@ -97,8 +97,7 @@ At first I decided to user the Web Audio API BufferLoader which would store song
 
 # MVPs
  * [X] Basic interactive visuals with an interactive homepage
- * [ ] Options for two different visualization styles based on music
- * [ ] User can input mp3 files through the main page
+ * [X] Options different music genres which randomize songs
  * [X] User can choose different music types/genres
 
 ## Developemnt timeline
@@ -129,6 +128,8 @@ Weekend:
  
  
 # Future Features may include
- * Connect the SoundCloud API to music to generate all kinds of music (maybe)
+ * Connect the SoundCloud API to music to generate all kinds of music (future)
  * Multiple pages for different types of music (study theme)
  * Additional page for music uploading files and music rendering/bars visualization(optional)
+ * User can input mp3 files through the main page
+
