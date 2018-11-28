@@ -8,7 +8,7 @@ const setupAudio = () => {
     './assets/music/hothands.mp3',];
   const randb = ['./assets/music/thinkingaboutyou.mp3', './assets/music/doyou.mp3', './assets/music/openyoureyes.mp3', './assets/music/getyou.mp3',
     './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
-  const onehitwonders = ['./assets/music/staytogether.mp3', './assets/music/dancinginthemoonlight.mp3', './assets/music/icanthelpmyself.mp3', './assets/music/september.mp3'];
+  const onehitwonders = ["./assets/music/staytogether.mp3", "./assets/music/dancinginthemoonlight.mp3", "./assets/music/icanthelpmyself.mp3", "./assets/music/september.mp3", "./assets/music/bluesky.mp3", "./assets/music/caroline.mp3", "./assets/music/cagylove.mp3", "./assets/music/iwyouback.mp3", "./assets/music/hookedonfeeling.mp3"];
   const classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3',];
   const study = ["./assets/music/lofi2.mp3"];
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
