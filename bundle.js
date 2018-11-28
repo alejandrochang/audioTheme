@@ -105,12 +105,14 @@ var setupAudio = function setupAudio() {
   // let classicRock = Math.floor(Math.random() * classicrock.length);
 
   var alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3'];
+  var soundtracks = [""];
   var randomHipHop = Math.floor(Math.random() * hiphop.length);
   var randomHouse = Math.floor(Math.random() * house.length);
   var randomRandb = Math.floor(Math.random() * randb.length);
   var oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
   var classicalMusic = Math.floor(Math.random() * classical.length);
   var alternativeMusic = Math.floor(Math.random() * alternative.length);
+  var randomTrack = Math.floor(Math.random() * soundtracks.length);
   var songs = {
     'hiphop': [hiphop[randomHipHop]],
     'house': [house[randomHouse]],

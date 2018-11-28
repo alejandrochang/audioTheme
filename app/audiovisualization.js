@@ -13,6 +13,7 @@ const setupAudio = () => {
   // const classicrock = [''];
   // let classicRock = Math.floor(Math.random() * classicrock.length);
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
+  const soundtracks = [""];
 
   let randomHipHop = Math.floor(Math.random() * hiphop.length);
   let randomHouse = Math.floor(Math.random() * house.length);
@@ -20,6 +21,7 @@ const setupAudio = () => {
   let oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
   let classicalMusic = Math.floor(Math.random() * classical.length);
   let alternativeMusic = Math.floor(Math.random() * alternative.length);
+  let randomTrack = Math.floor(Math.random() * soundtracks.length);
 
   const songs = {
     'hiphop': [hiphop[randomHipHop]],

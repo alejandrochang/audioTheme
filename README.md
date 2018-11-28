@@ -63,7 +63,7 @@ At first I decided to user the Web Audio API BufferLoader which would store song
 
 ![](/assets/images/audioTheme.gif)
 
- * JS Canvas (for visuals)
+ * JS Canvas (audio frequencies)
     ```javascript
     const canvas = document.getElementById("analyser-render");
     canvas.width = window.innerWidth - 2;
