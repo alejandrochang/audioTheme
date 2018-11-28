@@ -2,7 +2,7 @@ const setupAudio = () => {
   //Music Genres
   const hiphop = ["./assets/music/sundaycandy.mp3", "./assets/music/babyblue.mp3", "./assets/music/tuesday.mp3", "./assets/music/tuscanleather.mp3", "./assets/music/comebacktoearth.mp3", "./assets/music/january28.mp3", "./assets/music/anziety.mp3", "./assets/music/2009.mp3", "./assets/music/allido.mp3",
     "./assets/music/everydayshelter.mp3", './assets/music/slowjamz.mp3', './assets/music/girlsthatdance.mp3', './assets/music/happy.mp3',
-    './assets/music/heavenonlyknows.mp3',];
+    './assets/music/heavenonlyknows.mp3', './assets/music/ladders.mp3', './assets/music/soho.mp3'];
   const house = ['./assets/music/randomaccessmemories.mp3', './assets/music/igotu.mp3', './assets/music/comingover.mp3', './assets/music/firestone.mp3', './assets/music/tenniscourt.mp3', './assets/music/redlights.mp3',
     './assets/music/sleepless.mp3', './assets/music/stayhigh.mp3', './assets/music/tomorrowland.mp3', './assets/music/espoir.mp3', './assets/music/sunandmoon.mp3',
     './assets/music/hothands.mp3',];
