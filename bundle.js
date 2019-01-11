@@ -227,12 +227,18 @@ var setupAudio = function setupAudio() {
     draw();
   }
 
+  document.getElementById("button-play").addEventListener("click", function () {
+    context.resume().then(function () {
+      console.log("Playback resumed successfully");
+    });
+  });
   var audio, playbtn, mutebtn, pausebtn, volumeSlider;
 
   function initAudioPlayer() {
     audio = new Audio();
     audio.src = hiphop[randomHipHop];
-    audio.play();
+    audio.play(); // audio.src = "../assets/music/sundaycandy.mp3";
+    // audio.play();
 
     var changeGenre = function changeGenre(song) {
       console.log(song);

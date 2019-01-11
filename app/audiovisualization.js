@@ -143,11 +143,21 @@ const setupAudio = () => {
     draw();
   }
 
+  document.getElementById("button-play").addEventListener("click", () => {
+    context.resume().then(() => {
+      console.log("Playback resumed successfully");
+    });
+  });
+
     let audio, playbtn, mutebtn, pausebtn, volumeSlider;
       function initAudioPlayer() {
+        
         audio = new Audio();
         audio.src = hiphop[randomHipHop];
         audio.play();
+
+        // audio.src = "../assets/music/sundaycandy.mp3";
+        // audio.play();
 
         const changeGenre = (song) => { console.log(song); audio.src = songs[song]}
         let gdropdown = document.getElementById('genre-dropdown');
