@@ -1,6 +1,6 @@
 # Overview
 
-AudioTheme allows you to play different types of music for whatever ocassion with visually appealing animations. It gives the user flexibility to either import their own individual music or to choose from a pre-existing music category. 
+[AudioTheme](https://audiotheme.netlify.com/) allows you to play different types of music for whatever ocassion with visually appealing animations. It gives the user flexibility to either import their own individual music or to choose from a pre-existing music category. 
 
 # Functionality
    * Users can upload mp3 files and play them from the main page
