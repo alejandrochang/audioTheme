@@ -97,13 +97,14 @@
 __webpack_require__.r(__webpack_exports__);
 var setupAudio = function setupAudio() {
   //Music Genres
-  var hiphop = ["./assets/music/sundaycandy.mp3", "./assets/music/babyblue.mp3", "./assets/music/tuesday.mp3", "./assets/music/tuscanleather.mp3", "./assets/music/comebacktoearth.mp3", "./assets/music/january28.mp3", "./assets/music/anziety.mp3", "./assets/music/2009.mp3", "./assets/music/allido.mp3", "./assets/music/everydayshelter.mp3", './assets/music/slowjamz.mp3', './assets/music/girlsthatdance.mp3', './assets/music/happy.mp3', './assets/music/heavenonlyknows.mp3', './assets/music/ladders.mp3', './assets/music/soho.mp3'];
-  var house = ['./assets/music/randomaccessmemories.mp3', './assets/music/igotu.mp3', './assets/music/comingover.mp3', './assets/music/firestone.mp3', './assets/music/tenniscourt.mp3', './assets/music/redlights.mp3', './assets/music/sleepless.mp3', './assets/music/stayhigh.mp3', './assets/music/tomorrowland.mp3', './assets/music/espoir.mp3', './assets/music/sunandmoon.mp3', './assets/music/hothands.mp3'];
-  var randb = ['./assets/music/thinkingaboutyou.mp3', './assets/music/doyou.mp3', './assets/music/openyoureyes.mp3', './assets/music/getyou.mp3', './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
-  var onehitwonders = ["./assets/music/staytogether.mp3", "./assets/music/dancinginthemoonlight.mp3", "./assets/music/icanthelpmyself.mp3", "./assets/music/september.mp3", "./assets/music/bluesky.mp3", "./assets/music/caroline.mp3", "./assets/music/cagylove.mp3", "./assets/music/iwyouback.mp3", "./assets/music/hookedonfeeling.mp3"];
-  var classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3'];
-  var study = ["./assets/music/lofi2.mp3"];
-  var alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3'];
+  var rootPath = './assets/music/';
+  var hiphop = ["".concat(rootPath, "sundaycandy.mp3"), "".concat(rootPath, "babyblue.mp3"), "".concat(rootPath, "tuesday.mp3"), "".concat(rootPath, "tuscanleather.mp3"), "".concat(rootPath, "comebacktoearth.mp3"), "".concat(rootPath, "january28.mp3"), "".concat(rootPath, "anziety.mp3"), "".concat(rootPath, "2009.mp3"), "".concat(rootPath, "allido.mp3"), "".concat(rootPath, "everydayshelter.mp3"), "".concat(rootPath, "slowjamz.mp3"), "".concat(rootPath, "girlsthatdance.mp3"), "".concat(rootPath, "happy.mp3"), "".concat(rootPath, "heavenonlyknows.mp3"), "".concat(rootPath, "ladders.mp3"), "".concat(rootPath, "soho.mp3")];
+  var house = ["".concat(rootPath, "randomaccessmemories.mp3"), "".concat(rootPath, "igotu.mp3"), "".concat(rootPath, "comingover.mp3"), "".concat(rootPath, "firestone.mp3"), "".concat(rootPath, "tenniscourt.mp3"), "".concat(rootPath, "redlights.mp3"), "".concat(rootPath, "sleepless.mp3"), "".concat(rootPath, "stayhigh.mp3"), "".concat(rootPath, "tomorrowland.mp3"), "".concat(rootPath, "espoir.mp3"), "".concat(rootPath, "sunandmoon.mp3"), "".concat(rootPath, "hothands.mp3")];
+  var randb = ["".concat(rootPath, "thinkingaboutyou.mp3"), "".concat(rootPath, "doyou.mp3"), "".concat(rootPath, "openyoureyes.mp3"), "".concat(rootPath, "getyou.mp3"), "".concat(rootPath, "bananaclip.mp3"), "".concat(rootPath, "loveseason.mp3"), "".concat(rootPath, "sofartogo.mp3")];
+  var onehitwonders = ["".concat(rootPath, "staytogether.mp3"), "".concat(rootPath, "dancinginthemoonlight.mp3"), "".concat(rootPath, "icanthelpmyself.mp3"), "".concat(rootPath, "september.mp3"), "".concat(rootPath, "bluesky.mp3"), "".concat(rootPath, "caroline.mp3"), "".concat(rootPath, "cagylove.mp3"), "".concat(rootPath, "iwyouback.mp3"), "".concat(rootPath, "hookedonfeeling.mp3")];
+  var classical = ["".concat(rootPath, "thewayyoulooktonight.mp3"), "".concat(rootPath, "youngandbeautiful.mp3")];
+  var alternative = ["".concat(rootPath, "outofmyleague.mp3"), "".concat(rootPath, "allthesethingsthativedone.mp3")];
+  var study = ["".concat(rootPath, "lofi2.mp3")];
 
   var randomizeSong = function randomizeSong(genre) {
     return Math.floor(Math.random() * genre.length);

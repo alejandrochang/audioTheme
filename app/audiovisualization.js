@@ -1,17 +1,34 @@
 const setupAudio = () => {
   //Music Genres
-  const hiphop = ["./assets/music/sundaycandy.mp3", "./assets/music/babyblue.mp3", "./assets/music/tuesday.mp3", "./assets/music/tuscanleather.mp3", "./assets/music/comebacktoearth.mp3", "./assets/music/january28.mp3", "./assets/music/anziety.mp3", "./assets/music/2009.mp3", "./assets/music/allido.mp3",
-    "./assets/music/everydayshelter.mp3", './assets/music/slowjamz.mp3', './assets/music/girlsthatdance.mp3', './assets/music/happy.mp3',
-    './assets/music/heavenonlyknows.mp3', './assets/music/ladders.mp3', './assets/music/soho.mp3'];
-  const house = ['./assets/music/randomaccessmemories.mp3', './assets/music/igotu.mp3', './assets/music/comingover.mp3', './assets/music/firestone.mp3', './assets/music/tenniscourt.mp3', './assets/music/redlights.mp3',
-    './assets/music/sleepless.mp3', './assets/music/stayhigh.mp3', './assets/music/tomorrowland.mp3', './assets/music/espoir.mp3', './assets/music/sunandmoon.mp3',
-    './assets/music/hothands.mp3',];
-  const randb = ['./assets/music/thinkingaboutyou.mp3', './assets/music/doyou.mp3', './assets/music/openyoureyes.mp3', './assets/music/getyou.mp3',
-    './assets/music/bananaclip.mp3', './assets/music/loveseason.mp3', './assets/music/sofartogo.mp3'];
-  const onehitwonders = ["./assets/music/staytogether.mp3", "./assets/music/dancinginthemoonlight.mp3", "./assets/music/icanthelpmyself.mp3", "./assets/music/september.mp3", "./assets/music/bluesky.mp3", "./assets/music/caroline.mp3", "./assets/music/cagylove.mp3", "./assets/music/iwyouback.mp3", "./assets/music/hookedonfeeling.mp3"];
-  const classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3',];
-  const study = ["./assets/music/lofi2.mp3"];
-  const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
+  const rootPath = './assets/music/';
+  const hiphop = [
+    `${rootPath}sundaycandy.mp3`,`${rootPath}babyblue.mp3`,
+    `${rootPath}tuesday.mp3`,`${rootPath}tuscanleather.mp3`,
+    `${rootPath}comebacktoearth.mp3`,`${rootPath}january28.mp3`,
+    `${rootPath}anziety.mp3`,`${rootPath}2009.mp3`,
+    `${rootPath}allido.mp3`,`${rootPath}everydayshelter.mp3`,
+    `${rootPath}slowjamz.mp3`,`${rootPath}girlsthatdance.mp3`,
+    `${rootPath}happy.mp3`,`${rootPath}heavenonlyknows.mp3`,
+    `${rootPath}ladders.mp3`,`${rootPath}soho.mp3`
+  ];
+  const house = [
+    `${rootPath}randomaccessmemories.mp3`,`${rootPath}igotu.mp3`,
+    `${rootPath}comingover.mp3`,`${rootPath}firestone.mp3`,
+    `${rootPath}tenniscourt.mp3`,`${rootPath}redlights.mp3`,
+    `${rootPath}sleepless.mp3`,`${rootPath}stayhigh.mp3`,
+    `${rootPath}tomorrowland.mp3`, `${rootPath}espoir.mp3`,
+    `${rootPath}sunandmoon.mp3`,`${rootPath}hothands.mp3`
+  ];
+  const randb = [
+    `${rootPath}thinkingaboutyou.mp3`, `${rootPath}doyou.mp3`,
+    `${rootPath}openyoureyes.mp3`, `${rootPath}getyou.mp3`,
+    `${rootPath}bananaclip.mp3`, `${rootPath}loveseason.mp3`,
+    `${rootPath}sofartogo.mp3`
+  ];
+  const onehitwonders = [`${rootPath}staytogether.mp3`, `${rootPath}dancinginthemoonlight.mp3`, `${rootPath}icanthelpmyself.mp3`, `${rootPath}september.mp3`, `${rootPath}bluesky.mp3`, `${rootPath}caroline.mp3`, `${rootPath}cagylove.mp3`, `${rootPath}iwyouback.mp3`, `${rootPath}hookedonfeeling.mp3`];
+  const classical = [`${rootPath}thewayyoulooktonight.mp3`, `${rootPath}youngandbeautiful.mp3`,];
+  const alternative = [`${rootPath}outofmyleague.mp3`, `${rootPath}allthesethingsthativedone.mp3`,];
+  const study = [`${rootPath}lofi2.mp3`];
 
   const randomizeSong = (genre) => Math.floor(Math.random() * genre.length);
   let randomHipHop = Math.floor(Math.random() * hiphop.length);
