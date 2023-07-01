@@ -13,22 +13,17 @@ const setupAudio = () => {
   const study = ["./assets/music/lofi2.mp3"];
   const alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3',];
 
+  const randomizeSong = (genre) => Math.floor(Math.random() * genre.length);
   let randomHipHop = Math.floor(Math.random() * hiphop.length);
-  let randomHouse = Math.floor(Math.random() * house.length);
-  let randomRandb = Math.floor(Math.random() * randb.length);
-  let oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
-  let classicalMusic = Math.floor(Math.random() * classical.length);
-  let alternativeMusic = Math.floor(Math.random() * alternative.length);
-  let studyRand = Math.floor(Math.random() * study.length);
 
   const songs = {
-    'hiphop': [hiphop[randomHipHop]],
-    'house': [house[randomHouse]],
-    'randb': [randb[randomRandb]],
-    'onehit': [onehitwonders[oneHitWonders]],
-    'classical': [classical[classicalMusic]],
-    'study': [study[studyRand]],
-    'alternative-rock': [alternative[alternativeMusic]],
+    'hiphop': [hiphop[randomizeSong(hiphop)]],
+    'house': [house[randomizeSong(house)]],
+    'randb': [randb[randomizeSong(randb)]],
+    'onehit': [onehitwonders[randomizeSong(onehitwonders)]],
+    'classical': [classical[randomizeSong(classical)]],
+    'study': [study[randomizeSong(study)]],
+    'alternative-rock': [alternative[randomizeSong(alternative)]],
   }
 
   window.onload = start;
@@ -153,11 +148,9 @@ const setupAudio = () => {
       function initAudioPlayer() {
         
         audio = new Audio();
+        audio.crossOrigin = "anonymous";
         audio.src = hiphop[randomHipHop];
         audio.play();
-
-        // audio.src = "../assets/music/sundaycandy.mp3";
-        // audio.play();
 
         const changeGenre = (song) => { console.log(song); audio.src = songs[song]}
         let gdropdown = document.getElementById('genre-dropdown');

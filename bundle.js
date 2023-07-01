@@ -104,21 +104,20 @@ var setupAudio = function setupAudio() {
   var classical = ['./assets/music/thewayyoulooktonight.mp3', './assets/music/youngandbeautiful.mp3'];
   var study = ["./assets/music/lofi2.mp3"];
   var alternative = ["./assets/music/outofmyleague.mp3", './assets/music/allthesethingsthativedone.mp3'];
+
+  var randomizeSong = function randomizeSong(genre) {
+    return Math.floor(Math.random() * genre.length);
+  };
+
   var randomHipHop = Math.floor(Math.random() * hiphop.length);
-  var randomHouse = Math.floor(Math.random() * house.length);
-  var randomRandb = Math.floor(Math.random() * randb.length);
-  var oneHitWonders = Math.floor(Math.random() * onehitwonders.length);
-  var classicalMusic = Math.floor(Math.random() * classical.length);
-  var alternativeMusic = Math.floor(Math.random() * alternative.length);
-  var studyRand = Math.floor(Math.random() * study.length);
   var songs = {
-    'hiphop': [hiphop[randomHipHop]],
-    'house': [house[randomHouse]],
-    'randb': [randb[randomRandb]],
-    'onehit': [onehitwonders[oneHitWonders]],
-    'classical': [classical[classicalMusic]],
-    'study': [study[studyRand]],
-    'alternative-rock': [alternative[alternativeMusic]]
+    'hiphop': [hiphop[randomizeSong(hiphop)]],
+    'house': [house[randomizeSong(house)]],
+    'randb': [randb[randomizeSong(randb)]],
+    'onehit': [onehitwonders[randomizeSong(onehitwonders)]],
+    'classical': [classical[randomizeSong(classical)]],
+    'study': [study[randomizeSong(study)]],
+    'alternative-rock': [alternative[randomizeSong(alternative)]]
   };
   window.onload = start;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -236,9 +235,9 @@ var setupAudio = function setupAudio() {
 
   function initAudioPlayer() {
     audio = new Audio();
+    audio.crossOrigin = "anonymous";
     audio.src = hiphop[randomHipHop];
-    audio.play(); // audio.src = "../assets/music/sundaycandy.mp3";
-    // audio.play();
+    audio.play();
 
     var changeGenre = function changeGenre(song) {
       console.log(song);

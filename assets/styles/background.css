@@ -142,9 +142,8 @@ select {
   width: 44px;
   height: 44px;
   background-color: #000;
-  color: #fff;
-  padding: 3px 3px 3px 3px;
-  border-color: #000;
+  border: none;
+  padding: 3px;
   cursor: pointer;
   right: 154px;
   outline: none;
@@ -156,8 +155,8 @@ select {
   height: 44px;
   background-color: #000;
   color: #fff;
-  padding: 3px 3px 3px 3px;
-  border-color: #000;
+  padding: 3px;
+  border: none;
   cursor: pointer;
   position: absolute;
   left: 111px;
@@ -182,8 +181,8 @@ img#github {
 #genre-dropdown {
   position: relative;
   top: 95px;
+  left: 20px;
   height: 45px;
-  left: 72px;
   width: 53%;
   outline: none;
 }
